@@ -12,6 +12,7 @@ The aim of our project is to analyze beer preference shifts across seasons and i
 
 ## Proposed additional datasets
 - Potentially: Dataset with the weather in different states through the year. It would enable us to analyze the impact of the weather on the beer choices and the ratings.
+  [Weather dataset in the us](https://www.kaggle.com/datasets/nachiketkamod/weather-dataset-us)
 
 ## Methods
 
