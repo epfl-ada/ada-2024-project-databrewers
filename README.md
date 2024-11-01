@@ -1,7 +1,9 @@
 # DataBrewers
 
 ## Abstract
-The aim of our project is to analyze beer preference shifts across seasons and in response to weather changes, events and cultural festivities. This could significantly help professionals (brewers, marketers, etc.) by providing insights into costumer preferences. By understanding seasonal trends, brewers can adjust their product offerings to align more closely with consumer demand. 
+The aim of our project is to analyze beer preference shifts across seasons and in response to weather changes, events and cultural festivities. This could significantly help professionals (brewers, marketers, etc.) by providing insights into customer preferences. By understanding seasonal trends, brewers can adjust their product offerings to align more closely with consumer demand. 
+Moreover, as a conclusion of our research, we could suggest the best beer that would be the perfect match for each season/festivity, in the form of a time fresco. 
+
 
 ## Research questions
 - Are there some notable patterns through the seasons ?
