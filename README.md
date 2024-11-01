@@ -1,11 +1,36 @@
-# ada-2024-project-databrewers
+# DataBrewers
 
-README.md should contain:
-Title
-Abstract: A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?
-Research Questions: A list of research questions you would like to address during the project.
-Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible.
-Methods
-Proposed timeline
-Organization within the team: A list of internal milestones up until project Milestone P3.
-Questions for TAs (optional): Add here any questions you have for us related to the proposed project.
+## Abstract
+The aim of our project is to analyze beer preference shifts across seasons and in response to weather changes, events and cultural festivities. This could significantly help professionals (brewers, marketers, etc.) by providing insights into costumer preferences. By understanding seasonal trends, brewers can adjust their product offerings to align more closely with consumer demand. 
+
+## Research questions
+- Are there some notable patterns through the seasons ?
+- How do beer ratings vary by season ?
+- Which beer characteristics are the most important through the seasons ?
+- Are there some beers that are more consumed during specific seasons ?
+- How does the weather influence the ratings ?
+
+## Proposed additional datasets
+- Potentially: Dataset with the weather in different states through the year. It would enable us to analyze the impact of the weather on the beer choices and the ratings.
+
+## Methods
+
+In this project, we used the following methods to process our data:
+
+## Proposed timeline
+
+**Milestone 2:**
+
+**Milestone 3:**
+
+## Organization within the team 
+
+| Assignee   | Milestone 2 | Milestone 3 |
+| ---------- | ----------- | ----------- |
+| Eugénie    | -           | -           |
+| Clémence   | -           | -           |
+| Marin      | -           | -           |
+| Cléo       | -           | -           |
+| Pauline    | -           | -           |
+
+
