@@ -15,7 +15,6 @@ def load_matched_beer_data():
 
     return ratings_merged, users_approx, users_merged, beers_merged, breweries_merged
 
-
 def load_beer_advocate_data():
     # Extract and load 'BeerAdvocate.tar.gz'
     file_path = 'data/BeerAdvocate.tar.gz'
@@ -30,7 +29,6 @@ def load_beer_advocate_data():
 
     return beers_ba, reviews_ba, users_ba, breweries_ba, ratings_ba
 
-
 def load_rate_beer_data():
     # Extract and load 'RateBeer.tar.gz'
     file_path = 'data/RateBeer.tar.gz'
@@ -41,7 +39,7 @@ def load_rate_beer_data():
     reviews_rb = pd.read_csv('../data/reviews.txt.gz', header=None, names=["info"], delimiter='\t', on_bad_lines='skip')
     users_rb = pd.read_csv('../data/users.csv')
     breweries_rb = pd.read_csv('../data/breweries.csv')
-    ratings_rb = pd.read_csv('../data/ratings.txt.gz', delimiter='\t', on_bad_lines='skip')
+    ratings_rb = pd.read_csv('../data/ratings.txt.gz', header=None, names=["info"], delimiter='\t', on_bad_lines='skip')
 
     return beers_rb, reviews_rb, users_rb, breweries_rb, ratings_rb
 
