@@ -126,3 +126,45 @@ def seasonal_region_test(reviews, rating_column):
         print("-" * 50)
 
     return results
+
+
+def anova_abv_test(reviews, rating_column, timescale):
+    """
+    Perform ANOVA to assess if there are significant differences in ratings between abv_categories
+    across seasons and rating column (either aroma, palate, taste, appearance, overall, or rating). If the ANOVA test is significant, it runs Tukey's HSD test.
+
+    Parameters:
+    - reviews (pd.DataFrame): dataset containing reviews
+    - rating_column (str): rating column to analyze
+
+    Returns:
+    - dict: Dictionary with seasons as keys and p-values/Tukey's HSD results as values
+    """
+
+
+    results = {}
+    for x in reviews[timescale].unique() \
+            :
+
+        data = reviews[reviews[timescale] == x]
+
+        ratings_by_abv = [data[data['abv_category'] == category][rating_column]
+                             for category in data['abv_category'].unique()]
+
+        f_stat, p_value = stats.f_oneway(*ratings_by_abv)
+        results[x] = {'ANOVA_p_value': p_value}
+
+        # If ANOVA is significant: perform Tukey's HSD
+        if p_value < 0.05:
+            tukey = pairwise_tukeyhsd(endog=data[rating_column], groups=data['abv_category'], alpha=0.05)
+            results[x]['Tukey_HSD'] = tukey.summary()
+            print(f"{timescale}: {x}, rating column: {rating_column}")
+            print(f"ANOVA p-value: {p_value:.4f} - Significant difference between alcohol percentage")
+            print(tukey.summary())
+        else:
+            print(f"{timescale}: {x}, rating column: {rating_column}")
+            print(f"ANOVA p-value: {p_value:.4f} - No significant difference between alcohol percentage")
+
+        print("-" * 50)
+
+    return results
