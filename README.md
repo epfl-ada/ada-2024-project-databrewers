@@ -27,10 +27,8 @@ In this project, we used the following methods to process our data:
 Efficient data preprocessing is essential for analyzing beer preferences. This task involved loading, cleaning, and merging datasets to create a comprehensive structure for analysis. The following steps were completed:
 
 - **Load raw data files:** Imported datasets, including reviews, ratings, user profiles, and brewery information.
-- **Merge datasets:** Combined data based on common identifiers to create a unified dataset for analysis.
 - **Handle missing values:** Addressed missing entries and removed invalid data points.
 - **Normalize and standardize columns:** Extracted features from text reviews, converted categorical data into usable formats, and ensured consistent data representation.
-- **Process user and brewery information:** Split location details into country and state for better granularity.
 - **Analyze dataset content:** Evaluated the data to determine if additional datasets were required.
 - **Restrict analysis to USA-based BeerAdvocate users:** Verified that limiting the scope to users within the United States in the BeerAdvocate dataset did not pose significant limitations.
 
@@ -59,19 +57,27 @@ Understanding geographic variations in beer preferences can reveal regional tren
 
 ---
 
-## Task 4: Develop a Recommendation Model Based on Season and Events
+## Task 4: Sentiment Analysis
+
+Examining textual reviews helps understand subjective aspects of beer preferences and their associations with seasons and events.
+
+- **Word Frequency Analysis:** Identified the most frequent words in reviews across all data.
+- **Ambiguous Words:**
+        - Analyzed ambiguous words to classify them as positive or negative based on associated ratings.
+        - Manually tested ambiguous word classifications using 100+ reviews, removing words misclassified more than 20% of the time.
+- **Seasonal and Event Associations:**
+        - Identified words linked to specific seasons (e.g., "fresh" and "light" for summer).
+        - Highlighted words associated with cultural events (e.g., "July" for Independence Day).
+- **Comparison with Ratings:**
+        - Compared word frequency with the six metrics (taste, aroma, palate, appearance, overall rating, review count) to find correlations.
+        - Analyzed changes in word usage and sentiments across seasons to highlight evolving trends.
+
+---
+
+## Task 5: Develop a Recommendation Model Based on Season and Events
 This task aims to create a "time fresco" that suggests the ideal beer for each season or festivity, offering a visually engaging guide for both industry professionals and enthusiasts.
 
-- **Seasonal and event-based preferences:**
-    - Identify the most popular beer styles and their corresponding ratings for each season.
-    - Analyze the influence of major cultural events, such as Oktoberfest and Christmas, on beer ratings and preferences.
-    - Investigate changes in beer consumption patterns during specific holidays and events.
-- **State-based insights integration:**
-    - Incorporate regional trends by identifying the most popular beer styles in each state based on average ratings and review counts.
-    - Explore correlations between beer style preferences and state-specific factors, such as climate or cultural influences, to refine recommendations.
-    - Develop visualizations (e.g., heatmaps or bar charts) to represent beer preferences and ratings across states, highlighting clusters with similar preferences.
-- **Recommendation model construction:**
-    - Build a recommendation model that takes into account the time of year, location, and significant events.
+- **Recommendation model construction:** Build a recommendation model that takes into account the time of year, location, and significant events.
 
 ## Proposed timeline
 
