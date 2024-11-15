@@ -15,7 +15,7 @@ As the conclusion of our research, we aim to create a "time fresco" that suggest
 We decided that we won't be using any additional datasets for this project as the data provided in the BeerAdvocate dataset are enough to conduct a seasonal analysis of beer reviews.
 
 ## Data 
-Our dataset includes two dataset from two different websites : BeerAdvocate and RateBeer. In data preprocessing, we decided to analyze only the reviews published on the BeerAdvocate website, by users based in the United States of America. The reason of this choice is that the vast majority of the reviews are done in this country and it provides us with enough data to conduct our analysis. This lead us with more than 100'000 users and 7’000’000 ratings, among which we have more than 2’000’000 reviews. To conduct the season analysis through the year, we focused on the year 2006 to 2017 to have a minimal threshold of 70’000 reviews by year. 
+Our dataset includes two dataset from respective websites : BeerAdvocate and RateBeer. In data preprocessing, we decided to analyze only the reviews published on the BeerAdvocate website, by users based in the United States of America. The reason of this choice is that the vast majority of the reviews are done in this country and it provides us with enough data to conduct our analysis. This lead us with more than 100'000 users and 7’000’000 ratings, among which we have more than 2’000’000 reviews. To conduct the season analysis through the year, we focused on the year 2006 to 2017 to have a minimal threshold of 70’000 reviews by year. 
 
 **The datasets used in this project are downloadable through [following link](https://drive.google.com/drive/folders/1Wz6D2FM25ydFw_-41I9uTwG9uNsN4TCF?usp=share_link)**.
 
@@ -39,7 +39,7 @@ Efficient data processing is crucial for analyzing beer preferences. This task i
 ### Task 2: Temporal analysis of beer preferences
 This task analyzes how beer preferences change over time, focusing on seasonality and festivities.
 
-#### Task 2.1: Seasonal rrends in beer preferences
+#### Task 2.1: Seasonal trends in beer preferences
 - Explore how beer ratings and characteristics vary by season (spring, summer, fall, winter).
 - Identify beer styles and ratings that are most popular in different seasons.
 
