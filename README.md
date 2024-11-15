@@ -71,9 +71,9 @@ To understand subjective aspects of beer preferences and their associations with
 ---
 
 ## Task 5: Develop a Recommendation Model Based on Season and Events
-To create a “time fresco” that suggests the ideal beer for each season or festivity, we aimed to design a visually engaging guide for both industry professionals and enthusiasts.
+To create a “time fresco” that suggests the ideal beer for each season or festivity, we aimed to design a visually engaging guide for industry professionals.
 
-- **Recommendation model construction:** Build a recommendation model that takes into account the time of year, location, and significant events.
+- **Recommendation model construction:** Build a recommendation model that takes into account the time of year, location, and events.
 
 ## Proposed timeline
 
@@ -111,7 +111,7 @@ pip install -r pip_requirements.txt
 The directory structure of new project looks like this:
 
 ```
-├── data                        <- Project data files
+├── data                        <- Project data files (Where all downloaded files should be)
 │
 ├── src                         <- Source code
 │   ├── models                          <- Model directory
