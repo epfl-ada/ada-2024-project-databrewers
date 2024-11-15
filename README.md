@@ -6,38 +6,35 @@ Beer reviews offer a unique lens into consumer preferences, revealing intriguing
 As the conclusion of our research, we aim to create a "time fresco" that suggests the ideal beer for each season or festivity, offering a visually engaging guide for both industry professionals and enthusiasts.
 
 ## Research questions
-- Are there some notable patterns through the seasons or the years ?
-- How do beer ratings vary by season ?
-- Which beer characteristics are the most important through the seasons ?
-- Are there some beers that are more consumed during specific seasons ?
-- Are certain words or descriptors more frequently used in beer reviews during specific seasons ?
+- How do beer preferences change across different seasons or over the years?
+- Do alcohol content and beer style affect ratings depending on the season?
+- Does the location of users—and consequently different climate condition—impact their beer preferences?
+- Are specific beers consistently associated with certain seasons or weather conditions in beer reviews?
 
 ## Proposed additional datasets
 We decided that we won't be using any additional datasets for this project as the data provided in the BeerAdvocate dataset are enough to conduct a seasonal analysis of beer reviews.
 
 ## Data 
-Our dataset includes two dataset from two different websites : BeerAdvocate and RateBeer. In data preprocessing, we decided to analyze only the reviews published on the BeerAdvocate website, by users based in the United States of America. The reason of this choice is that the vast majority of the reviews are done in this country and it provides us with enough data to conduct our analysis. This lead us with more than 100'000 users and 7’000’000 ratings, among which we have more than 2’000’000 reviews. To conduct the season analysis through the year, we focused on the year 2006 to 2017 to have a minimal threshold of 70’000 reviews by year. 
+Our dataset includes two dataset from two different websites : BeerAdvocate and RateBeer. In data preprocessing, we decided to analyze only the reviews published on the BeerAdvocate website, by users based in the United States of America. The reason of this choice is that most of the reviews are done in this country and it provides us with enough data to conduct our analysis. This lead us with more than 100'000 users and 7’000’000 ratings, among which we have more than 2’000’000 reviews. To conduct the season analysis through the year, we focused on the year 2006 to 2017 to have a minimal threshold of 70’000 reviews by year. 
 
 **The datasets used in this project are downloadable through the [following link](https://drive.google.com/drive/folders/1Wz6D2FM25ydFw_-41I9uTwG9uNsN4TCF?usp=share_link)**.
 
 ## Methods
-In this project, we used the following methods to process our data:
 
 ## Task 1: Data Preprocessing and Merging
-Efficient data preprocessing is essential for analyzing beer preferences. This task involved loading, cleaning, and merging datasets to create a comprehensive structure for analysis. The following steps were completed:
+To ensure efficient data preprocessing for analyzing beer preferences, we focused on loading, cleaning, and merging datasets to create a comprehensive structure for analysis, following these steps:
 
 - **Load raw data files:** Imported datasets, including reviews, ratings, user profiles, and brewery information.
-- **Handle missing values:** Addressed missing entries and removed invalid data points.
-- **Normalize and standardize columns:** Extracted features from text reviews, converted categorical data into usable formats, and ensured consistent data representation.
+- **Handle missing values and normalize columns:** Addressed missing entries, removed invalid data points, and converted categorical data into usable formats
 - **Analyze dataset content:** Evaluated the data to determine if additional datasets were required.
 - **Restrict analysis to USA-based BeerAdvocate users:** Verified that limiting the scope to users within the United States in the BeerAdvocate dataset did not pose significant limitations.
-
+- **Categorization:** Group states based on geographical regions, classify beer styles into broader categories, and divide numerical alcohol content into three distinct ranges.
 ---
 
 ## Task 2: Temporal Analysis of Beer Preferences
-Understanding temporal patterns is vital for uncovering seasonal and event-driven trends in beer preferences. This task focused on analyzing how beer ratings and characteristics vary over time. The following steps were undertaken:
+To uncover seasonal trends in beer preferences, we followed these steps to analyze variations in beer ratings and characteristics over time:
 
-- **Seasonal analysis:** Examined how beer ratings and characteristics change across seasons (spring, summer, fall, winter).
+- **Seasonal analysis:** Examined how beer ratings and characteristics change across seasons.
 - **Analyze review frequency:**
     - Calculated the total number of reviews submitted each year.
     - Investigated the number of reviews by season to uncover temporal trends in beer popularity.
@@ -49,7 +46,7 @@ Understanding temporal patterns is vital for uncovering seasonal and event-drive
 ---
 
 ## Task 3: Comparative Analysis of Beer Preferences Across States
-Understanding geographic variations in beer preferences can reveal regional trends and cultural influences. This task focused on analyzing how beer preferences differ across states. The following steps were undertaken:
+To uncover regional trends and cultural influences, we analyzed geographic variations in beer preferences by following these steps:
 
 - **Regional trends in ratings:**
     - Compared the average beer ratings across states to uncover geographic patterns in beer appreciation.
@@ -58,34 +55,41 @@ Understanding geographic variations in beer preferences can reveal regional tren
 ---
 
 ## Task 4: Sentiment Analysis
+To understand subjective aspects of beer preferences and their associations with seasons and events, we examined textual reviews using the following approach:
 
-Examining textual reviews helps understand subjective aspects of beer preferences and their associations with seasons and events.
-
-- **Word Frequency Analysis:** Identified the most frequent words in reviews across all data.
-- **Ambiguous Words:**
+- 4.1: **Word Frequency Analysis:** Identified the most frequent words in reviews across all data.
+- 4.2: **Ambiguous Words:**
         - Analyzed ambiguous words to classify them as positive or negative based on associated ratings.
         - Manually tested ambiguous word classifications using 100+ reviews, removing words misclassified more than 20% of the time.
-- **Seasonal and Event Associations:**
+- 4.3: **Seasonal and Event Associations:**
         - Identified words linked to specific seasons (e.g., "fresh" and "light" for summer).
         - Highlighted words associated with cultural events (e.g., "July" for Independence Day).
-- **Comparison with Ratings:**
+- 4.4: **Comparison with Ratings:**
         - Compared word frequency with the six metrics (taste, aroma, palate, appearance, overall rating, review count) to find correlations.
         - Analyzed changes in word usage and sentiments across seasons to highlight evolving trends.
 
 ---
 
 ## Task 5: Develop a Recommendation Model Based on Season and Events
-This task aims to create a "time fresco" that suggests the ideal beer for each season or festivity, offering a visually engaging guide for both industry professionals and enthusiasts.
+To create a “time fresco” that suggests the ideal beer for each season or festivity, we aimed to design a visually engaging guide for both industry professionals and enthusiasts.
 
 - **Recommendation model construction:** Build a recommendation model that takes into account the time of year, location, and significant events.
 
 ## Proposed timeline
 
-**Data preprocessing and initial exploratory data analysis**: 15th November
-**Task implementation**: 29th November
-**Final analysis**: 9th December
-**Report**: 15th December
-**Data story**: 20th December
+- **Data preprocessing and exploration**: 15th November
+- **Task implementation**: 29th November
+- **Final analysis**: 15th December
+- **Data story**: 20th December
+
+## Organization within the team
+- Eugénie: Task 1, 2, 4.4
+- Clémence: Task 1, 4.1
+- Marin: Task 1, 2, 4.2
+- Cléo: Task 1, 3, 5
+- Pauline: Task 1, 3, 4.3
+
+
 
 ## Quickstart
 
