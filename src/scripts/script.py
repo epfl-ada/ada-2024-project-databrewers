@@ -128,7 +128,7 @@ def seasonal_region_test(reviews, rating_column):
     return results
 
 
-def anova_test(reviews, rating_column, timescale, category):
+def anova_test(review, rating_column, timescale, category):
     """
     Perform ANOVA to assess if there are significant differences in ratings between a given timescale
     for a given category across a rating column (either aroma, palate, taste, appearance, overall, or rating). 
@@ -146,10 +146,10 @@ def anova_test(reviews, rating_column, timescale, category):
 
 
     results = {}
-    for cat in reviews[category].unique() \
+    for cat in review[category].unique() \
             :
 
-        data = reviews[reviews[category] == cat]
+        data = review[review[category] == cat]
 
         ratings = [data[data[timescale] == time][rating_column]
                              for time in data[timescale].unique()]
