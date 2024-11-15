@@ -126,3 +126,48 @@ def seasonal_region_test(reviews, rating_column):
         print("-" * 50)
 
     return results
+
+
+def anova_test(review, rating_column, timescale, category):
+    """
+    Perform ANOVA to assess if there are significant differences in ratings between a given timescale
+    for a given category across a rating column (either aroma, palate, taste, appearance, overall, or rating). 
+    If the ANOVA test is significant, it runs Tukey's HSD test.
+
+    Parameters:
+    - reviews (pd.DataFrame): dataset containing reviews
+    - rating_column (str): rating column to analyze
+    - timescale (str): timescale to compare
+    - category (str): category to analyze
+
+    Returns:
+    - dict: Dictionary with seasons as keys and p-values/Tukey's HSD results as values
+    """
+
+
+    results = {}
+    for cat in review[category].unique() \
+            :
+
+        data = review[review[category] == cat]
+
+        ratings = [data[data[timescale] == time][rating_column]
+                             for time in data[timescale].unique()]
+
+        f_stat, p_value = stats.f_oneway(*ratings)
+        results[cat] = {'ANOVA_p_value': p_value}
+
+        # If ANOVA is significant: perform Tukey's HSD
+        if p_value < 0.05:
+            tukey = pairwise_tukeyhsd(endog=data[rating_column], groups=data[timescale], alpha=0.05)
+            results[cat]['Tukey_HSD'] = tukey.summary()
+            print(f"{category}: {cat}, rating column: {rating_column}")
+            print(f"ANOVA p-value: {p_value:.4f} - Significant difference between {timescale}")
+            print(tukey.summary())
+        else:
+            print(f"{category}: {cat}, rating column: {rating_column}")
+            print(f"ANOVA p-value: {p_value:.4f} - No significant difference between {timescale}")
+
+        print("-" * 50)
+
+    return results
