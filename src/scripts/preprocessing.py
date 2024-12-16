@@ -2,10 +2,12 @@ import pandas as pd
 from categorization import assign_region, categorize_abv, get_season, get_style_map
 from dataloader import load_beer_advocate_data, format_data
 
-# Load BeerAdvocate data
+# LOADING -------------------------------------------------------------------------------------------
+
+# Load only the BeerAdvocate dataset
 beers_ba, reviews_ba, users_ba, breweries_ba, ratings_ba = load_beer_advocate_data()
 
-# Reshape reviews and ratings
+# Reshape reviews and ratings dataset (1 to 16 columns)
 reviews_ba = format_data(reviews_ba, "review_id")
 ratings_ba = format_data(ratings_ba, "rating_id")
 
@@ -14,18 +16,18 @@ users_ba['nbr_ratings'] = pd.to_numeric(users_ba['nbr_ratings'], errors='coerce'
 users_ba['nbr_reviews'] = pd.to_numeric(users_ba['nbr_reviews'], errors='coerce')
 
 
-## LOCATION
+# LOCATION -------------------------------------------------------------------------------------------
 
 # Merge the reviews and ratings with user information on location
 reviews_ba = reviews_ba.merge(users_ba[['user_id', 'location']], on='user_id', how='left')
 ratings_ba = ratings_ba.merge(users_ba[['user_id', 'location']], on='user_id', how='left')
 
-# Remove the states to only have the countries name
+# Remove the states to only have the countries name (e.g. United States)
 users_ba['country'] = users_ba['location'].str.split(',').str[0]
 reviews_ba['country'] = reviews_ba['location'].str.split(',').str[0]
 ratings_ba['country'] = ratings_ba['location'].str.split(',').str[0]
 
-# Remove the countries to only have the states name
+# Remove the countries to only have the states name (e.g. Colorado)
 reviews_ba['states'] = reviews_ba['location'].str.split(',').str[1]
 ratings_ba['states'] = ratings_ba['location'].str.split(',').str[1]
 users_ba['states'] = users_ba['location'].str.split(',').str[1]
@@ -40,13 +42,13 @@ reviews = reviews_ba[reviews_ba['country'] == 'United States']
 ratings = ratings_ba[ratings_ba['country'] == 'United States']
 users = users_ba[users_ba['country'] == 'United States']
 
-# Assign region to US state
+# Assign region to US state (e.g. Northeast, Midwest, South, West)
 reviews['region'] = reviews['states'].apply(assign_region)
 ratings['region'] = ratings['states'].apply(assign_region)
 users['region'] = users['states'].apply(assign_region)
 
 
-## BEER STYLE
+# BEER STYLE -----------------------------------------------------------------------------------------
 
 # Remove the country in the beer name
 beers_ba['style'] = beers_ba['style'].str.replace('American ', '')
@@ -59,7 +61,7 @@ beers_ba['style'] = beers_ba['style'].str.replace('Scottish ', '')
 beers_ba['style'] = beers_ba['style'].str.replace('Double / Imperial ', '')
 beers_ba['style'] = beers_ba['style'].str.replace(' (APA)', '')
 
-# New style map
+# New style map (broader categorization)
 stylemap = get_style_map()
 beers_ba['style_simp'] = beers_ba['style'].replace(stylemap)
 
@@ -68,7 +70,7 @@ reviews = reviews.merge(beers_ba[['beer_id', 'style_simp']], on='beer_id', how='
 ratings = ratings.merge(beers_ba[['beer_id', 'style_simp']], on='beer_id', how='left')
 
 
-## ABV
+# ABV (Alcohol by Volume) ----------------------------------------------------------------------------
 
 # Convert 'abv' to numeric, coercing errors to NaN
 reviews['abv'] = pd.to_numeric(reviews['abv'], errors='coerce')
@@ -82,7 +84,7 @@ reviews['abv_category'] = reviews['abv'].apply(lambda x: categorize_abv(x, abv_q
 ratings['abv_category'] = ratings['abv'].apply(lambda x: categorize_abv(x, abv_quantiles))
 
 
-## SEASON
+# SEASON ---------------------------------------------------------------------------------------------
 
 # Extract the year, month, and day
 reviews['date'] = pd.to_datetime(reviews['date'], unit='s', errors='coerce')
@@ -104,7 +106,8 @@ season_order = ['Winter', 'Spring', 'Summer', 'Fall']
 reviews['season'] = pd.Categorical(reviews['season'], categories=season_order, ordered=True)
 ratings['season'] = pd.Categorical(ratings['season'], categories=season_order, ordered=True)
 
-## YEAR
+
+# YEAR -----------------------------------------------------------------------------------------------
 
 # Filter to keep only years with more than 70'000 reviews
 reviews_per_year = reviews['year'].value_counts()
@@ -113,14 +116,13 @@ years_above_threshold = reviews_per_year[reviews_per_year > 70000].index
 reviews = reviews[reviews['year'].isin(years_above_threshold)]
 ratings = ratings[ratings['year'].isin(years_above_threshold)]
 
-
-
 # Remove Nan values
 ratings = ratings.dropna(subset=['rating'])
 
 
-## SAVE
+# SAVING ---------------------------------------------------------------------------------------------
 
+# Save as compressed csv files
 reviews.to_csv('data/cleaned/reviews.csv.gz', index=False, compression='gzip')
 ratings.to_csv('data/cleaned/ratings.csv.gz', index=False, compression='gzip')
 users.to_csv('data/cleaned/users.csv.gz', index=False, compression='gzip')
