@@ -111,16 +111,20 @@ pip install -r pip_requirements.txt
 The directory structure of new project looks like this:
 
 ```
-├── data                        <- Project data files (Where all downloaded files should be)
+├── data                        <- Contains all project data files (where all downloaded files should be)
+│   ├── cleaned                 <- Stores all processed and cleaned datasets
 │
-├── src                         <- Source code
-│   ├── models                          <- Model directory
-│   ├── utils                           <- Utility directory
-│   ├── scripts                         <- Shell scripts
+├── src                         
+│   ├── graph                   <- Contains all the graph visualizations in HTLM for the data story
+│   ├── scripts     
+│   │   ├── categorization.py   <- Contains the functions for categorizing the dataset (e.g. by ABV, styles)
+│   │   ├── dataloader.py       <- Contains the function to load the datasets from raw files
+│   │   ├── preprocessing.py    <- Main script for preprocessing and cleaning the dataset
+│   │   ├── statistics.py       <- Contains the function for statistical testing and analysis
 │
-├── tests                       <- Tests of any kind
-│
-├── results.ipynb               <- a well-structured notebook showing the results
+├── data_cleaning.ipynb         <- Notebook for exploratory data analysis and data cleaning
+├── data_story_htlm.ipynb       <- Notebook showing the graph for the datastory
+├── milestoneP3.ipynb           <- Notebook showing the results for the milestone P3
 │
 ├── .gitignore                  <- List of files ignored by git
 ├── pip_requirements.txt        <- File for installing python dependencies
