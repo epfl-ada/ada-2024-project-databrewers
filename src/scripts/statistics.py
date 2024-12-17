@@ -134,3 +134,41 @@ def anova_test(review, rating_column, timescale, category):
 
     return results
 
+
+from scipy.stats import f_oneway
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+import pandas as pd
+
+
+def test_seasonal_significance_ABV(data, abv_category):
+    """
+    Test if mean ratings differ significantly across seasons for a given ABV category
+
+    Parameters:
+    - data (pd.DataFrame): DataFrame containing 'season', 'abv_category', and 'rating' columns
+    - abv_category (str): ABV category to test ('low' or 'high').
+    """
+
+    filtered_data = data[data['abv_category'] == abv_category]
+
+    print(f"Number of ratings per season for '{abv_category}' ABV:")
+    print(filtered_data['season'].value_counts())
+
+    season_groups = [group['rating'].dropna().values for _, group in filtered_data.groupby('season')]
+
+    # ANOVA
+    if all(len(values) > 1 for values in season_groups) and len(season_groups) > 1:
+        f_stat, p_value = f_oneway(*season_groups)
+        print(f"ANOVA Result: F-statistic = {f_stat:.4f}, p-value = {p_value:.4f}")
+
+        # If significant, perform Tukey HSD
+        if p_value < 0.05:
+            print("Significant differences detected among seasons. Performing pairwise Tukey HSD test...\n")
+            tukey = pairwise_tukeyhsd(endog=filtered_data['rating'],
+                                      groups=filtered_data['season'],
+                                      alpha=0.05)
+            print(tukey)
+        else:
+            print("No significant differences detected between seasons.\n")
+    else:
+        print("Not enough data to perform ANOVA. \n")
