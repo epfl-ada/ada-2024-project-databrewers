@@ -1,5 +1,5 @@
-
 import re
+import os
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -11,155 +11,164 @@ from matplotlib import pyplot as plt
 from concurrent.futures import ThreadPoolExecutor
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import seaborn as sns
 
-analyzer = SentimentIntensityAnalyzer()
-
-
+# Helper function to preprocess text
 def preprocess_text(text):
-    words = re.findall(r'\b\w+\b', text.lower())  
-    return words
+    return re.findall(r'\b\w+\b', text.lower()) 
 
-def get_cleaned_reviews(reviews):
-    tqdm.pandas()
+
+def clean_data(reviews):
+    """
+    Cleans the data by removing rows where 'text' is NaN or not a string, and applying the preprocess_text function
+
+    Args:
+    reviews: DataFrame containing reviews
+
+    Returns:
+    reviews_clean: DataFrame containing cleaned reviews
+    """
+
     # Remove rows where 'text' is NaN or not a string
-    reviews_clean = reviews[reviews['text'].progress_apply(lambda x: isinstance(x, str))]
-
+    reviews_clean = reviews[reviews['text'].apply(lambda x: isinstance(x, str))]
     # Now apply the preprocess_text function
-    reviews_clean['cleaned_tokens'] = reviews_clean ['text'].progress_apply(preprocess_text)
+    reviews_clean['cleaned_tokens'] = reviews_clean['text'].apply(preprocess_text)
+
     return reviews_clean
 
-def top_n_words(reviews,n :int):
-    nltk.download('stopwords')
-    # Flatten the list of words from all reviews
-    all_words = [word for review_us in tqdm(reviews['cleaned_tokens'],desc="Processing") for word in review_us]
-    stop_words = set(stopwords.words('english'))
-    words = [word for word in tqdm(all_words, desc="Processing") if word.isalpha() and word not in stop_words and word.lower() != "beer"]
 
-    # Count word frequencies
-    word_freq = Counter(words)
-    top_20_words = word_freq.most_common(n)
-    return top_20_words, word_freq
-
-
-def gen_wordcloud(word_freq):
-    # Generate the word cloud
-    wordcloud = WordCloud(width=800, height=400, background_color= 'white').generate_from_frequencies(word_freq)
-
-    plt.figure(figsize=(10,5))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis('off')
-    plt.title('Word cloud of the most common words used in the US beer reviews')
-    plt.show()
+def get_words(reviews_high, reviews_low):
+    """
     
-def plot_words(top_20_words):
-    words, counts = zip(*top_20_words)
-    plt.figure(figsize=(10, 6))
-    plt.bar(words, counts, color='skyblue')
-    plt.xticks(rotation=45, ha='right')
-    plt.xlabel('Words')
-    plt.ylabel('Frequency')
-    plt.title('Top 20 most frequent words in US beer reviews')
+    Gets words from reviews with high and low ratings
+
+    Args:
+    reviews_high: DataFrame containing reviews with high ratings
+    reviews_low: DataFrame containing reviews with low ratings
+
+    Returns:
+    all_words_high: List of words in reviews with high ratings
+    all_words_low: List of words in reviews with low ratings
+    """
+
+    # Define stop words
+    stop_words = set(stopwords.words('english'))
+
+    # Generate bigrams for each group, excluding stop words and non-alphabetic tokens
+    bigrams_high = [
+        " ".join(bigram)
+        for tokens in tqdm(reviews_high['cleaned_tokens'], desc="Processing High Ratings")
+        for bigram in zip(tokens[:-1], tokens[1:])  # Create bigrams
+        if all(
+            word.isalpha() and word.lower() not in stop_words and word.lower() != "beer"
+            for word in bigram
+        )  # Filter out stop words and specific unwanted words
+    ]
+
+    bigrams_low = [
+        " ".join(bigram)
+        for tokens in tqdm(reviews_low['cleaned_tokens'], desc="Processing Low Ratings")
+        for bigram in zip(tokens[:-1], tokens[1:])  # Create bigrams
+        if all(
+            word.isalpha() and word.lower() not in stop_words and word.lower() != "beer"
+            for word in bigram
+        )  # Filter out stop words and specific unwanted words
+    ]
+
+    return bigrams_high, bigrams_low
+
+
+def plot_and_save_word_clouds(wordcloud_high, wordcloud_low, save_path_high="src/graph/high_rating_wordcloud.html", save_path_low="src/graph/low_rating_wordcloud.html"):
+    """
+    Plots word clouds for reviews with high and low ratings and saves them to HTML files.
+
+    Args:
+    wordcloud_high: WordCloud object for high ratings
+    wordcloud_low: WordCloud object for low ratings
+    save_path_high: Path to save the high-rating word cloud (HTML format)
+    save_path_low: Path to save the low-rating word cloud (HTML format)
+    """
+
+    # Ensure the save directory exists
+    os.makedirs(os.path.dirname(save_path_high), exist_ok=True)
+
+    # Plot the word clouds
+    plt.figure(figsize=(15, 7))
+
+    plt.subplot(1, 2, 1)
+    plt.imshow(wordcloud_high, interpolation='bilinear')
+    plt.axis('off')
+    plt.title('Most common pair of words used in beer reviews with a rating higher than 4')
+
+    plt.subplot(1, 2, 2)
+    plt.imshow(wordcloud_low, interpolation='bilinear')
+    plt.axis('off')
+    plt.title('Most common pair of words used in beer reviews with a rating lower than 3')
+
     plt.tight_layout()
     plt.show()
-    
-# Function to compute sentiment
-def get_sentiment(text):
-    sentiment = analyzer.polarity_scores(text)['compound']
-    return sentiment
 
-# Function to classify words based on sentiment
-def classify_words(word):
-    sentiment_score = analyzer.polarity_scores(word)['compound']
-    if sentiment_score > 0:
-        return word, 'positive'
-    elif sentiment_score < 0:
-        return word, 'negative'
-    return None  # Neutral words are ignored
+    # Save word clouds as images
+    wordcloud_high.to_file("temp_high.png")
+    wordcloud_low.to_file("temp_low.png")
 
-# Analyze sentiment in parallel
-def process_sentiments(top_words):
-    print("Classifying words...")
-    positive_words = []
-    negative_words = []
+    # Save HTML files
+    high_html_content = f'<html><body><h1>High Rating Word Cloud</h1><img src="temp_high.png" alt="High Rating Word Cloud"></body></html>'
+    low_html_content = f'<html><body><h1>Low Rating Word Cloud</h1><img src="temp_low.png" alt="Low Rating Word Cloud"></body></html>'
 
-    with ThreadPoolExecutor() as executor:
-        results = list(tqdm(executor.map(classify_words, top_words), total=len(top_words), desc="Word Classification Progress"))
-        
-    # Filter out None values for neutral words and separate positive and negative words
-    for result in results:
-        if result:  # Skip None results
-            word, sentiment = result
-            if sentiment == 'positive':
-                positive_words.append(word)
-            elif sentiment == 'negative':
-                negative_words.append(word)
-    
-    print("Word classification completed.")
-    return positive_words, negative_words
-    
-def sentiment_analysis(word_freq):
-    # Initialize VADER sentiment analyzer
-    
-    # Get the 5000 most common words
-    top_5000_words = [word for word, count in word_freq.most_common(5000)]
+    with open(save_path_high, "w") as high_file:
+        high_file.write(high_html_content)
 
-    # Process sentiment classification for the top 50000 words
-    positive_words, negative_words = process_sentiments(top_5000_words)
+    with open(save_path_low, "w") as low_file:
+        low_file.write(low_html_content)
 
-    # Count the number of positive and negative words among these 50000 most common words
-    num_positive_words = len(set(top_5000_words).intersection(set(positive_words)))
-    num_negative_words = len(set(top_5000_words).intersection(set(negative_words)))
+    print(f"Word clouds saved to:\n{save_path_high}\n{save_path_low}")
 
-    print(f"Number of positive words among the top 5000 words: {num_positive_words}")
-    print(f"Number of negative words among the top 5000 words: {num_negative_words}")
-    # Count word frequencies for positive and negative words
-    positive_word_freq = Counter(positive_words)
-    negative_word_freq = Counter(negative_words)
-    gen_wordcloud(positive_word_freq)
-    gen_wordcloud(negative_word_freq)
-    
 
-# count the number of times each flavour appears in the reviews for each flavour
-def count_flavour_occurrences(text, flavour):
-    count = text.count(flavour)
-    if count > 0:
-        return 1
-    return count
+# Helper function to calculate the percentage of reviews containing each bigram
+def calculate_percentage_of_reviews_containing_bigram(bigrams, reviews):
+    percentages = []
 
-# Define a function to process the reviews for each flavour
-def process_flavours(text, flavours):
-    return {
-        flavour: text['cleaned_tokens'].progress_apply(count_flavour_occurrences, args=(flavour,))
-        for flavour in flavours
-    }
+    for bigram, _ in bigrams:
+        # Check how many reviews contain this bigram
+        num_reviews_containing_bigram = sum(
+            1 for tokens in reviews['cleaned_tokens'] if tuple(bigram.split()) in zip(tokens[:-1], tokens[1:])
+        )
+        percentage = (num_reviews_containing_bigram / len(reviews)) * 100 if len(reviews) > 0 else 0
+        percentages.append((bigram, percentage))
 
-def analyse_flavours(reviews):
-    flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 'sweet', 'bitter', 'sour', 'tart', 'crisp']
-    #keep only reviews where (aroma + palate)/2 is greater than 4 and the sum of all flavours is greater than 0
-    reviews = reviews[(reviews['aroma'] + reviews['palate']) / 2 > 4]
-    # Process all flavours without using a for loop
-    reviews.update(process_flavours(reviews, flavours))
-    reviews = reviews[reviews[flavours].sum(axis=1) > 0]
-    # Step 1: Calculate the total number of reviews per month
-    reviews['total_reviews'] = reviews.groupby('month')['cleaned_tokens'].transform('size')
+    return percentages
 
-    # Step 2: Normalize each flavor's occurrences by the total reviews for the month
-    for flavour in flavours:
-        reviews[f"{flavour}_normalized"] = reviews[flavour] / reviews['total_reviews']
+def compare_high_low(bigram_freq_high, bigram_freq_low, reviews_high, reviews_low):
+    """
+    Compare the most common bigrams in reviews with high and low ratings.
 
-    # Step 3: Plot the normalized occurrences
-    plt.figure(figsize=(15, 10))
-    plt.title('Normalized Flavour Occurrences in US Beer Reviews by Month')
-    for flavour in tqdm(flavours):
-        sns.lineplot(data=reviews, x='month', y=f"{flavour}_normalized", label=flavour)
-    plt.xlabel('Month')
-    plt.ylabel('Normalized Occurrences')
-    plt.legend()
-    plt.show()
-    return reviews
+    Args:
+    bigram_freq_high: Counter object containing bigram frequencies for reviews with high ratings
+    bigram_freq_low: Counter object containing bigram frequencies for reviews with low ratings
+    reviews_high: DataFrame containing reviews with high ratings
+    reviews_low: DataFrame containing reviews with low ratings
 
-    
-    
-    
+    Returns:
+    df_comparison: DataFrame comparing the most common bigrams in high and low
+    """
+
+    # Get the top 20 most common bigrams in each group
+    top_bigrams_high = bigram_freq_high.most_common(20)
+    top_bigrams_low = bigram_freq_low.most_common(20)
+
+    # Calculate percentages for each group
+    percentages_high = calculate_percentage_of_reviews_containing_bigram(top_bigrams_high, reviews_high)
+    percentages_low = calculate_percentage_of_reviews_containing_bigram(top_bigrams_low, reviews_low)
+
+    # Create DataFrames for comparison
+    df_high = pd.DataFrame(percentages_high, columns=['Bigram', 'Percentage High Reviews'])
+    df_low = pd.DataFrame(percentages_low, columns=['Bigram', 'Percentage Low Reviews'])
+
+    # Merge the DataFrames
+    df_comparison = pd.merge(df_high, df_low, on='Bigram', how='outer')
+
+    # Sort by the most frequent bigrams in the high group
+    df_comparison = df_comparison.sort_values(by='Percentage High Reviews', ascending=False)
+
+    return df_comparison
