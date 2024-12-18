@@ -1,0 +1,8 @@
+title: Data Brewers
+description: A story data about beers
+baseurl: "/ada-2024-project-databrewers"
+url: "https://epfl-ada.github.io"
+
+# Optional configuration
+theme: minima
+markdown: kramdown
