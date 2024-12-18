@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-
+import nltk
 from collections import Counter
 from wordcloud import WordCloud
 from matplotlib import pyplot as plt
@@ -12,6 +12,7 @@ from concurrent.futures import ThreadPoolExecutor
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import seaborn as sns
 
 
 
