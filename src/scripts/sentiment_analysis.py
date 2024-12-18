@@ -14,7 +14,7 @@ from nltk.tokenize import word_tokenize
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import seaborn as sns
 
-
+analyzer = SentimentIntensityAnalyzer()
 
 
 def preprocess_text(text):
@@ -102,7 +102,7 @@ def process_sentiments(top_words):
     
 def sentiment_analysis(word_freq):
     # Initialize VADER sentiment analyzer
-    analyzer = SentimentIntensityAnalyzer()
+    
     # Get the 5000 most common words
     top_5000_words = [word for word, count in word_freq.most_common(5000)]
 
