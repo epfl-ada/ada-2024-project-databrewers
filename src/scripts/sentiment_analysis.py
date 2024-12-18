@@ -55,7 +55,6 @@ def gen_wordcloud(word_freq):
     
 def plot_words(top_20_words):
     words, counts = zip(*top_20_words)
-
     plt.figure(figsize=(10, 6))
     plt.bar(words, counts, color='skyblue')
     plt.xticks(rotation=45, ha='right')
