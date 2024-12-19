@@ -40,7 +40,7 @@ To understand the seasonal analysis, it is important to understand how the beers
 
 The rating metrics is computed based on the five other scores with the following formula:
 
-rating = 0.06 * appearance + 0.24 * aroma + 0.4 * taste + 0.1 * mouthfeel + 0.2 * overall
+`rating = 0.06 * appearance + 0.24 * aroma + 0.4 * taste + 0.1 * mouthfeel + 0.2 * overall`
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated.
 
@@ -87,27 +87,27 @@ What we can conclude from this is that, as the seasons progress, beer style pref
 
 ## Sentiment and semantic analysis
 
-In addition to numerical ratings, **textual reviews** play a crucial role in understanding consumer preferences and perceptions of beer. Sentiment and semantic analysis are powerful techniques that allow us to extract insights from the textual data in the BeerAdvocate reviews.
+In addition to numerical ratings, **textual reviews** play a crucial role in understanding consumer preferences and perceptions of beer. **Sentiment and semantic analysis** are powerful techniques that allow us to extract insights from the textual data in the BeerAdvocate reviews.
 
 ### 1. Sentiment analysis
 
-When it comes to beer reviews, the words that people use can tell us a lot about their preferences. In this section, we dive into the language of beer reviews to uncover which words are linked to positive ratings and which ones are tied to negative feedback. By analyzing these words, we can start to understand what makes a beer enjoyable for consumers, and what could be causing disappointment.
+When it comes to beer reviews, the words that people use can tell us a lot about their preferences. In this section, we dive into the words used in beer reviews to uncover which ones are linked to positive ratings and which ones are tied to negative feedback. By analyzing these words, we can start to understand what makes a beer enjoyable for consumers, and what makes it not that enjoyable.
 
-To make things simpler, we categorized beers based on their ratings: beers with ratings greater than 4/5 are considered **highly rated** (positive), while those with ratings lower than 3/5 are seen as **poorly rated** (negative). This approach allows us to focus on the key aspects that reviewers appreciate or dislike in their beers.
+To investigate, we categorized beers based on their ratings: beers with ratings greater than 4/5 are considered **highly rated** (positive), while those with ratings lower than 3/5 are seen as **poorly rated** (negative).
 
-To illustrate this, we generated two word clouds: one for the most common word pairs found in positive reviews and another for those in negative reviews. At first glance, it was clear that some word pairs were predominantly associated with high-rated beers, while others appeared more often in lower-rated ones. These word clouds provided a valuable insight into the language of beer enthusiasts, highlighting the key aspects they appreciate or dislike in their beer experiences.
+We generated two word clouds: one for the most common word pairs found in positive reviews and another for those in negative reviews. At first glance, it was clear that some word pairs were more associated with high-rated beers, while others appeared more often in lower-rated ones. These word clouds provided a valuable insight into the language of beer enthusiasts, highlighting the key aspects they appreciate or dislike in their beer experiences.
 
 <figure style="text-align: center;">
   <img src="{{ site.baseurl }}/src/graph/sentiment_analysis.png" alt="Sentiment Analysis WordCloud" width="800">
 </figure>
 
-Certain words and phrases seem to have a strong association with beers that get high marks. Words like "full bodied," "dark chocolate," and "roasted malts" popped up frequently in positive reviews. It’s almost as if these terms were a signal of what makes a beer stand out—rich, bold flavors that are clearly favored by drinkers.
+Certain words and phrases seem to appear a lot for beers that get high marks. Words like **"full bodied"** **"dark chocolate"** and **"roasted malts"** popped up frequently in positive reviews. It highlights beer caractectistics that consumers appreciate.
 
-On the flip side, there were also words that kept appearing in negative reviews. For instance, phrases like "light bodied" and "yellow color" seemed to show up more often when beers weren’t getting high marks. These terms seemed to be tied to beers that reviewers weren’t as impressed by.
+There were also words that kept appearing in negative reviews. For instance, phrases like **"light bodied"** and **"yellow color"** seemed to show up more often when beers weren’t getting high marks. These terms seemed to be tied to beers that reviewers weren’t as impressed by.
 
-But it wasn’t all so clear-cut. Some word pairs, like "medium bodied," appeared in both positive and negative reviews, suggesting that context plays a big role in how we perceive these terms. It became evident that some characteristics of a beer could be appreciated by some drinkers but not by others.
+Some word pairs, like **"medium bodied"** appeared in both positive and negative reviews, suggesting that context plays a big role in how we perceive these terms. Some characteristics of a beer could be appreciated by some drinkers but not by others which could explain this.
 
-This deeper dive into the language of beer reviews helps us understand that beer drinkers have very specific tastes—many gravitate toward beers with bold flavors and full bodies, while others might be looking for something lighter or more subtle. By tracking these word pairs, we’ve uncovered a clearer picture of what makes a beer truly enjoyable, and what might lead to a less favorable review.
+These results allow us to determine the characteristic that an ideal beer should have, and those that it should not have, in order to be enjoyed by consumers.
 
 
 #### 2. Semantic analysis
@@ -115,6 +115,12 @@ This deeper dive into the language of beer reviews helps us understand that beer
 TODO: ADD A SEMANTIC ANALYSIS INTRODUCTION
 
 ## Conclusion
+
+In this project, we explored beer reviews, analyzing patterns in ratings, styles, and consumer preferences across seasons and regions in the United States. By leveraging numerical ratings and textual reviews, we uncovered insights into how beer preferences vary with alcohol content, seasonal changes, and geographical trends. Sentiment analysis of textual reviews further enriched our understanding, putting light on the aspects the most valued by beer enthusiasts.
+
+Our findings reveal that preferences are not only shaped by individual tastes but are also influenced by external factors like weather and cultural trends. Brewers and marketers can use these insights to better align their offerings with consumer expectations. Through this analysis, we hope to contribute to a deeper understanding of the dynamic and evolving beer landscape, offering value to researchers, breweries, and beer lovers alike.
+
+Thank you for visiting our project website, and we hope our work inspires further exploration of this rich and flavorful topic!
 
 ## Contributors
 
