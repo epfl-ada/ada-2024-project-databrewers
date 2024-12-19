@@ -78,19 +78,14 @@ def get_words(reviews_high, reviews_low):
     return bigrams_high, bigrams_low
 
 
-def plot_and_save_word_clouds(wordcloud_high, wordcloud_low, save_path_high="src/graph/high_rating_wordcloud.html", save_path_low="src/graph/low_rating_wordcloud.html"):
+def plot_word_clouds(wordcloud_high, wordcloud_low):
     """
-    Plots word clouds for reviews with high and low ratings and saves them to HTML files.
+    Plots word clouds for reviews with high and low ratings.
 
     Args:
     wordcloud_high: WordCloud object for high ratings
     wordcloud_low: WordCloud object for low ratings
-    save_path_high: Path to save the high-rating word cloud (HTML format)
-    save_path_low: Path to save the low-rating word cloud (HTML format)
     """
-
-    # Ensure the save directory exists
-    os.makedirs(os.path.dirname(save_path_high), exist_ok=True)
 
     # Plot the word clouds
     plt.figure(figsize=(15, 7))
@@ -107,22 +102,6 @@ def plot_and_save_word_clouds(wordcloud_high, wordcloud_low, save_path_high="src
 
     plt.tight_layout()
     plt.show()
-
-    # Save word clouds as images
-    wordcloud_high.to_file("temp_high.png")
-    wordcloud_low.to_file("temp_low.png")
-
-    # Save HTML files
-    high_html_content = f'<html><body><h1>High Rating Word Cloud</h1><img src="temp_high.png" alt="High Rating Word Cloud"></body></html>'
-    low_html_content = f'<html><body><h1>Low Rating Word Cloud</h1><img src="temp_low.png" alt="Low Rating Word Cloud"></body></html>'
-
-    with open(save_path_high, "w") as high_file:
-        high_file.write(high_html_content)
-
-    with open(save_path_low, "w") as low_file:
-        low_file.write(low_html_content)
-
-    print(f"Word clouds saved to:\n{save_path_high}\n{save_path_low}")
 
 
 # Helper function to calculate the percentage of reviews containing each bigram
