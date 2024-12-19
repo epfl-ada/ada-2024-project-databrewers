@@ -5,15 +5,11 @@ title: Databrewers Project 2024
 
 # Welcome to the Databrewers Project
 
-<div style="text-align: justify;">
-  Welcome to the official website of the **Databrewers Project** for the **Applied Data Analysis** course at EPFL. This project aims to analyze beer review data, focusing on insights and trends in beer reviews and their characteristics.
-</div>
+Welcome to the official website of the **Databrewers Project** for the **Applied Data Analysis** course at EPFL. This project aims to analyze beer review data, focusing on insights and trends in beer reviews and their characteristics.
 
-<div style="text-align: justify;">
-  Beers have been enjoyed for centuries across cultures, and today beer enthusiasts share their experiences and rate their favorite brews on online platforms such as [BeerAdvocate](https://www.beeradvocate.com) and [RateBeer](https://www.ratebeer.com). With a vast number of reviews available online, these platforms have become a gold mine for analyzing trends in beer preferences, consumption patterns, and the factors that influence people’s choices.
-</div>
+Beers have been enjoyed for centuries across cultures, and today beer enthusiasts share their experiences and rate their favorite brews on online platforms such as [BeerAdvocate](https://www.beeradvocate.com) and [RateBeer](https://www.ratebeer.com). With a vast number of reviews available online, these platforms have become a gold mine for analyzing trends in beer preferences, consumption patterns, and the factors that influence people’s choices.
 
-TODO: write a text to ask our research question, make it “catchy” to continue to read the analysis
+Our project focus on how beer ratings and reviews evolve over time, especially with respect to seasonal and long-term changes. How do beer preferences shift across different seasons, and how do climate and geographical factors influence these choices? Does the alcohol content or beer style impact ratings differently depending on the time of year? Furthermore, can we identify specific beers that are consistently linked to certain seasons? By addressing these questions, we aim to provide actionable insights for brewers, marketers, and enthusiasts alike, helping them align their offerings with the dynamic preferences of consumers.
 
 ## Dataset
 
