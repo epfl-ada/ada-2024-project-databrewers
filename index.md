@@ -41,7 +41,8 @@ To understand the seasonal analysis, it is important to understand how the beers
 
 The rating metrics is computed based on the five other scores with the following formula :
 
-`rating = 0.06*appearance + 0.24*aroma + 0.4*taste + 0.1*mouthfeel + 0.2*overall`
+$ \text{rating} = 0.06 \times \text{appearance} + 0.24 \times \text{aroma} + 0.4 \times \text{taste} + 0.1 \times \text{mouthfeel} + 0.2 \times \text{overall} $
+
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings,only the rating metric will be investigated. 
 

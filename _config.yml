@@ -6,3 +6,6 @@ url: "https://epfl-ada.github.io"
 # Optional configuration
 theme: minima
 markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
