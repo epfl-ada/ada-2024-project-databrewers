@@ -17,7 +17,7 @@ For our study, we were provided with two distinct datasets. The first one contai
 
 <div style="display: flex; justify-content: center; gap: 20px;">
   <figure style="text-align: center;">
-    {% include description_ba.png %}
+    <img src="{{ site.baseurl }}/src/graph/introduction/description_ba.png" alt="Rate Beer dataset" width="300">
     <figcaption style="font-weight: bold;">Beer Advocate Dataset</figcaption>
   </figure>
   <figure style="text-align: center;">
