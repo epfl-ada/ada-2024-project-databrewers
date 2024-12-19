@@ -5,3 +5,6 @@ _site/
 .sass-cache/
 .jekyll-metadata
 .DS_Store
+
+# Ignore the data folder
+data/
