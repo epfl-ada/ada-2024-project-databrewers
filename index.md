@@ -15,7 +15,7 @@ TODO: write a text to ask our research question, make it “catchy” to continu
 
 For our study, we were provided with two distinct datasets. The first one contained data from the BeerAdvocate website, while the second contained data from the RateBeer website. After some preliminary analysis, we decided that the data from the BeerAdvocate website was enough to conduct our analysis.
 
-<div style="display: flex; justify-content: center; gap: 20px;">
+<div style="display: flex; justify-content: center; gap: 40px;">
   <figure style="text-align: center;">
     <img src="{{ site.baseurl }}/src/graph/introduction/description_ba.png" alt="Rate Beer dataset" width="300">
     <figcaption style="font-weight: bold;">Beer Advocate Dataset</figcaption>
@@ -54,10 +54,10 @@ One important detail about the beers is their **Alcohol By Volume (ABV)**, expre
 Will low-alcohol beers be favored in the warm season? Or in the cold season?
 
 <div style="display: flex; justify-content: center; gap: 10px;">
-  <div style="max-width: 45%;"> 
+  <div>
     {% include season_ratings_high_abv.html %}
   </div>
-  <div style="max-width: 45%;"> 
+  <div>
     {% include season_ratings_low_abv.html %}
   </div>
 </div>
