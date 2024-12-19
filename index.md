@@ -53,7 +53,10 @@ One important detail about the beers is their **Alcohol By Volume (ABV)**, expre
 
 Will low-alcohol beers be favored in the warm season? Or in the cold season?
 
-TODO: ADD SEASONAL RATINGS GRAPHS
+<div style="display: flex; justify-content: center; gap: 20px;">
+  {% include season_ratings_high_abv.html %}
+  {% include season_ratings_low_abv.html %}
+</div>
 
 To answer these questions, we group beers by season and alcohol content category, and compare their scores. As we can see, ratings are not constant throughout the year, and high and low peaks can be observed for both low and high ABV beers. In winter, high-alcohol content beers reach their highest peak, while low-alcohol content beers reach their lowest peak at this time of year in terms of rating. In summer, on the other hand, high ABV beers are the least rated. And in spring, low ABV beers reach their highest rating. We can therefore conclude that during the warm season (summer, spring), low-alcohol beers are preferred, while as the cold season (winter) approaches, users tend to favor high-alcohol beers.
 
