@@ -40,10 +40,7 @@ To understand the seasonal analysis, it is important to understand how the beers
 
 The rating metrics is computed based on the five other scores with the following formula:
 
-
-$$
-\text{rating} = 0.06 \times \text{appearance} + 0.24 \times \text{aroma} + 0.4 \times \text{taste} + 0.1 \times \text{mouthfeel} + 0.2 \times \text{overall}
-$$
+rating = 0.06 * appearance + 0.24 * aroma + 0.4 * taste + 0.1 * mouthfeel + 0.2 * overall
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated.
 
@@ -54,10 +51,10 @@ One important detail about the beers is their **Alcohol By Volume (ABV)**, expre
 Will low-alcohol beers be favored in the warm season? Or in the cold season?
 
 <div style="display: flex; justify-content: center; gap: 10px;">
-  <div style="width: 50%;">
+  <div style="width: 60%;">
     {% include season_ratings_high_abv.html %}
   </div>
-  <div style="width: 50%;">
+  <div style="width: 60%;">
     {% include season_ratings_low_abv.html %}
   </div>
 </div>
