@@ -123,3 +123,22 @@ def plot_abv_seasonal_trends(data, metric):
 
     plt.tight_layout()
     plt.show()
+
+
+def plot(data, x, y, hue, legend_title):
+    '''
+    Plot the data with x, y, hue and legend tittle specified
+    '''
+    plt.figure(figsize=(7, 3))
+
+    sns.lineplot(data=data, x=x, y=y, hue=hue, markers=True, dashes=False)
+
+    plt.xlabel(x)
+    plt.ylabel(f'{y.capitalize()}')
+    plt.xticks(rotation=45)
+
+    plt.legend(title=legend_title, loc='upper left', bbox_to_anchor=(1, 1), fontsize=9, title_fontsize=12)
+
+
+    plt.tight_layout()
+    plt.show()
