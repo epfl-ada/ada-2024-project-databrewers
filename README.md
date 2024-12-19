@@ -111,23 +111,31 @@ pip install -r pip_requirements.txt
 The directory structure of new project looks like this:
 
 ```
-├── data                        <- Contains all project data files (where all downloaded files should be)
-│   ├── cleaned                 <- Stores all processed and cleaned datasets
+├── data                            <- Contains all project data files (where all downloaded files should be)
+│   ├── cleaned                     <- Stores all processed and cleaned datasets
 │
 ├── src                         
-│   ├── graph                   <- Contains all the graph visualizations in HTLM for the data story
+│   ├── graph                       <- Contains all the graph visualizations in HTLM for the data story
 │   ├── scripts     
-│   │   ├── categorization.py   <- Contains the functions for categorizing the dataset (e.g. by ABV, styles)
-│   │   ├── dataloader.py       <- Contains the function to load the datasets from raw files
-│   │   ├── preprocessing.py    <- Main script for preprocessing and cleaning the dataset
-│   │   ├── statistics.py       <- Contains the function for statistical testing and analysis
+│   │   ├── categorization.py       <- Contains the functions for categorizing the dataset (e.g. by ABV, styles)
+│   │   ├── dataloader.py           <- Contains the functions to load the datasets from raw files
+│   │   ├── plot.py                 <- Contains the functions to plot
+│   │   ├── preprocessing.py        <- Main script for preprocessing and cleaning the dataset
+│   │   ├── semantic_analysis.py    <- Contains the functions for semantic anylsis
+│   │   ├── sentiment_analysis.py   <- Contains the functions for sentiment anylsis
+│   │   ├── statistics.py           <- Contains the functions for statistical testing and analysis
 │
-├── data_cleaning.ipynb         <- Notebook for exploratory data analysis and data cleaning
-├── data_story_htlm.ipynb       <- Notebook showing the graph for the datastory
-├── milestoneP3.ipynb           <- Notebook showing the results for the milestone P3
+├── data_cleaning.ipynb             <- Notebook for exploratory data analysis and data cleaning
+├── data_story_htlm.ipynb           <- Notebook showing the graph for the datastory
+├── milestoneP2.ipynb               <- Notebook showing the results for the milestone P2
+├── milestoneP3.ipynb               <- Notebook showing the results for the milestone P3
+├── seasonal_trend_analysis.ipynb   <- Notebook containing the detailled analysis over the seasons and years
 │
-├── .gitignore                  <- List of files ignored by git
-├── pip_requirements.txt        <- File for installing python dependencies
+├── config.yml                      <- For the datastory website
+├── Gemfile                         <- For the datastory website
+├── index.md                        <- For the datastory website
+├── .gitignore                      <- List of files ignored by git
+├── pip_requirements.txt            <- File for installing python dependencies
 └── README.md
 ```
 

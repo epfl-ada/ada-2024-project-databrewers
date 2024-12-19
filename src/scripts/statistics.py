@@ -1,4 +1,3 @@
-import pandas as pd
 import scipy.stats as stats
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
 

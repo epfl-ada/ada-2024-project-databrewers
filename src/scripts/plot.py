@@ -1,6 +1,7 @@
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
+import seaborn as sns
 
 def plot_highest_rated_styles_by_season(highest_rated_style):
     """
@@ -82,6 +83,62 @@ def plot_high_low_abv_trends(high_abv, low_abv):
 
     # Adjust Y-axis limits
     axes[1].set_ylim(high_abv['rating'].min() - 0.1, high_abv['rating'].max() + 0.1)
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_abv_seasonal_trends(data, metric):
+    """
+    Plots seasonal trends of beer ratings for low and high ABV categories across regions
+
+    Parameters:
+    - data: The dataset containing the ratings
+    - metric: The column name representing the metric to plot
+    """
+
+    grouped_data = data.groupby(['season', 'region', 'abv_category'])[metric].mean().reset_index()
+
+    plt.figure(figsize=(10, 5))
+
+    # Low ABV
+    plt.subplot(1, 2, 1)
+    low_abv_data = grouped_data[grouped_data['abv_category'] == 'low']
+    sns.lineplot(data=low_abv_data, x='season', y=metric, hue='region', style='region', markers=True, dashes=False)
+    plt.xlabel('Season')
+    plt.ylabel(metric.capitalize())
+    plt.title("Low ABV beers")
+    plt.xticks(rotation=45)
+    plt.legend(title='Region', loc='upper left', bbox_to_anchor=(1, 1))
+
+    # High ABV
+    plt.subplot(1, 2, 2)
+    high_abv_data = grouped_data[grouped_data['abv_category'] == 'high']
+    sns.lineplot(data=high_abv_data, x='season', y=metric, hue='region', style='region', markers=True, dashes=False)
+    plt.xlabel('Season')
+    plt.ylabel(metric.capitalize())
+    plt.title("High ABV beers")
+    plt.xticks(rotation=45)
+    plt.legend(title='Region', loc='upper left', bbox_to_anchor=(1, 1))
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot(data, x, y, hue, legend_title):
+    '''
+    Plot the data with x, y, hue and legend tittle specified
+    '''
+    plt.figure(figsize=(7, 3))
+
+    sns.lineplot(data=data, x=x, y=y, hue=hue, markers=True, dashes=False)
+
+    plt.xlabel(x)
+    plt.ylabel(f'{y.capitalize()}')
+    plt.xticks(rotation=45)
+
+    plt.legend(title=legend_title, loc='upper left', bbox_to_anchor=(1, 1), fontsize=9, title_fontsize=12)
+
 
     plt.tight_layout()
     plt.show()

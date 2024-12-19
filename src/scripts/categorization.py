@@ -237,3 +237,22 @@ state_to_abbreviation = {
 
 def get_state_abbreviations():
     return state_to_abbreviation
+
+def order_season(ratings):
+    '''
+    Takes a dataframe and order the season
+    '''
+    season_order = ['Winter', 'Spring', 'Summer', 'Fall']
+    ratings['season'] = pd.Categorical(ratings['season'], categories=season_order, ordered=True)
+    return ratings
+
+
+def top_styles(ratings):
+    '''
+    Keep only the ratings of the styles respresenting at least 2% of total number of ratings
+    '''
+    total = ratings['style_simp'].value_counts().sum()
+    beer_styles_above_2_percent = (ratings['style_simp'].value_counts()/total)>0.02
+    styles_above_2_percent = beer_styles_above_2_percent[beer_styles_above_2_percent].index
+    ratings_top_styles = ratings[ratings['style_simp'].isin(styles_above_2_percent)]
+    return ratings_top_styles
