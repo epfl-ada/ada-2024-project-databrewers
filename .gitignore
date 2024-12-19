@@ -1,0 +1,7 @@
+# Ignore the _site folder (Jekyll build output)
+_site/
+
+# Ignore temporary or log files
+.sass-cache/
+.jekyll-metadata
+.DS_Store
