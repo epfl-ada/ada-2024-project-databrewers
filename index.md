@@ -63,7 +63,7 @@ To answer these questions, we group beers by season and alcohol content category
 
 ### 2. Seasonal trend in beer ratings at the scale of the United States
 
-<div style="display: flex; justify-content: center; width: 80%; height: 800;">
+<div style="display: flex; justify-content: center; width: 80%;">
   {% include beer_styles_seasons_ratings.html %}
 </div>
 
