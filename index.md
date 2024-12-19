@@ -15,8 +15,8 @@ For our study, we were provided with two distinct datasets. The first one contai
 
 
 <div style="display: flex; justify-content: center; gap: 20px;">
-  <img src="/assets/images/introduction/description_ba.png" alt="Image 1" width="300">
-  <img src="/assets/images/introduction/description_rb.png" alt="Image 2" width="300">
+  <img src="{{ site.baseurl }}/assets/images/introduction/description_ba.png" alt="Beer Advocate dataset" width="300">
+  <img src="{{ site.baseurl }}/assets/images/introduction/description_rb.png" alt="Rate Beer dataset" width="300">
 </div>
 
 
