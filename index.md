@@ -50,11 +50,11 @@ One important detail about the beers is their **Alcohol By Volume (ABV)**, expre
 
 Will low-alcohol beers be favored in the warm season? Or in the cold season?
 
-<div style="display: flex; justify-content: center; gap: 10px;">
-  <div style="width: 60%;">
+<div style="display: flex; justify-content: center;">
+  <div style="width: 50%;">
     {% include season_ratings_high_abv.html %}
   </div>
-  <div style="width: 60%;">
+  <div style="width: 50%;">
     {% include season_ratings_low_abv.html %}
   </div>
 </div>
