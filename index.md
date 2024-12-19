@@ -98,7 +98,7 @@ To make things simpler, we categorized beers based on their ratings: beers with 
 To illustrate this, we generated two word clouds: one for the most common word pairs found in positive reviews and another for those in negative reviews. At first glance, it was clear that some word pairs were predominantly associated with high-rated beers, while others appeared more often in lower-rated ones. These word clouds provided a valuable insight into the language of beer enthusiasts, highlighting the key aspects they appreciate or dislike in their beer experiences.
 
 <figure style="text-align: center;">
-  <img src="{{ site.baseurl }}/src/graph/sentiment_analysis.png" alt="Sentiment Analysis WordCloud" width="600">
+  <img src="{{ site.baseurl }}/src/graph/sentiment_analysis.png" alt="Sentiment Analysis WordCloud" width="800">
 </figure>
 
 Certain words and phrases seem to have a strong association with beers that get high marks. Words like "full bodied," "dark chocolate," and "roasted malts" popped up frequently in positive reviews. It’s almost as if these terms were a signal of what makes a beer stand out—rich, bold flavors that are clearly favored by drinkers.
