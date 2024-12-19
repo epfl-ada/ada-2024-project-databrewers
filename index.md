@@ -41,7 +41,9 @@ To understand the seasonal analysis, it is important to understand how the beers
 The rating metrics is computed based on the five other scores with the following formula:
 
 
-$ \text{rating} = 0.06 \times \text{appearance} + 0.24 \times \text{aroma} + 0.4 \times \text{taste} + 0.1 \times \text{mouthfeel} + 0.2 \times \text{overall} $
+$$
+\text{rating} = 0.06 \times \text{appearance} + 0.24 \times \text{aroma} + 0.4 \times \text{taste} + 0.1 \times \text{mouthfeel} + 0.2 \times \text{overall}
+$$
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated.
 
@@ -88,10 +90,16 @@ To make things simpler, we categorized beers based on their ratings: beers with 
 To illustrate this, we generated two word clouds: one for the most common word pairs found in positive reviews and another for those in negative reviews. At first glance, it was clear that some word pairs were predominantly associated with high-rated beers, while others appeared more often in lower-rated ones. These word clouds provided a valuable insight into the language of beer enthusiasts, highlighting the key aspects they appreciate or dislike in their beer experiences.
 
 <figure style="text-align: center;">
-  <img src="{{ site.baseurl }}/src/graph/beer_wordcloud.png" alt="Sentiment Analysis WordCloud" width="600">
+  <img src="{{ site.baseurl }}/src/graph/sentiment_analysis.png" alt="Sentiment Analysis WordCloud" width="600">
 </figure>
 
+Certain words and phrases seem to have a strong association with beers that get high marks. Words like "full bodied," "dark chocolate," and "roasted malts" popped up frequently in positive reviews. It’s almost as if these terms were a signal of what makes a beer stand out—rich, bold flavors that are clearly favored by drinkers.
 
+On the flip side, there were also words that kept appearing in negative reviews. For instance, phrases like "light bodied" and "yellow color" seemed to show up more often when beers weren’t getting high marks. These terms seemed to be tied to beers that reviewers weren’t as impressed by.
+
+But it wasn’t all so clear-cut. Some word pairs, like "medium bodied," appeared in both positive and negative reviews, suggesting that context plays a big role in how we perceive these terms. It became evident that some characteristics of a beer could be appreciated by some drinkers but not by others.
+
+This deeper dive into the language of beer reviews helps us understand that beer drinkers have very specific tastes—many gravitate toward beers with bold flavors and full bodies, while others might be looking for something lighter or more subtle. By tracking these word pairs, we’ve uncovered a clearer picture of what makes a beer truly enjoyable, and what might lead to a less favorable review.
 
 
 #### 2. Semantic analysis
