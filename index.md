@@ -54,7 +54,7 @@ The rating metrics is computed based on the five other scores with the following
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated. 
 
-1. Seasonal influence on beer ratings for ABV category
+### 1. Seasonal influence on beer ratings for ABV category
 
 One important detail about the beers is their **Alcohol By Volume (ABV)**, expressed as a percentage ranging from 0 to 100%.
 To analyze how the alcohol content of a beer might influence its preference across seasons, and by extension, different weather conditions, we categorized the beers into three groups: **low** (0-5.4%), **middle** (5.4-8.7%), and **high** (8.7-67.5%) ABV.
@@ -67,11 +67,11 @@ To answer these questions, we group beers by season and alcohol content category
 As we can see, ratings are not constant throughout the year, and high and low peaks can be observed for both low and high ABV beers. In winter, high-alcohol content beers reach their highest peak, while low-alcohol content beers reach their lowest peak at this time of year in terms of rating. In summer, on the other hand, high ABV beers are the least rated. 
 And in spring, low ABV beers reach their highest rating. We can therefore conclude that during the warm season (summer, spring), low-alcohol beers are preferred, while as the cold season (winter) approaches, users tend to favor high-alcohol beers.
 
-2. Seasonal trend in beer ratings at the scale of the United States
+### 2. Seasonal trend in beer ratings at the scale of the United States
 
 TODO: ADD GRAPH WITH MEAN RATINGS FOR PALE LAGER PER SEASON
 
-3. Seasonal trend in beer ratings across the states
+### 3. Seasonal trend in beer ratings across the states
 
 We now know that beer style preferences do not vary much across the United States over the seasons. But will this also translate to the state level? Or will we see more variation by state?
 
@@ -98,9 +98,9 @@ What we can conclude from this is that, as the seasons progress, beer style pref
 
 ## Sentiment and semantic analysis
 
-1. Sentiment analysis
+### 1. Sentiment analysis
 
-2. Semantic analysis
+#### 2. Semantic analysis
 
 ## Conclusion
 
