@@ -15,10 +15,7 @@ For our study, we were provided with two distinct datasets. The first one contai
 
 
 
-<div>
-    <h2>Rate Beer Chart</h2>
-    <img src="/src/graph/introduction/description_rb.html" alt="Rate Beer Chart" width="500" />
-</div>
+{% include description_rb.html %}
 
 <div>
     <h2>Rate Beer Chart</h2>
