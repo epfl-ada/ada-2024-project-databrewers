@@ -3,7 +3,7 @@ layout: home
 title: Databrewers Project 2024
 ---
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   # Welcome to the Databrewers Project
 </span>
 
@@ -13,7 +13,7 @@ Beers have been enjoyed for centuries across cultures, and today beer enthusiast
 
 TODO: write a text to ask our research question, make it “catchy” to continue to read the analysis
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ## Dataset
 </span>
 
@@ -38,7 +38,7 @@ TODO: IMPORT IMAGE OF THE DISTRIBUTION OF RATINGS
 
 The diversity of beer styles can make it difficult to compare; to avoid redundancy of styles with similar characteristics, styles were simplified using an article from the [BeerAdvocate website](https://www.beeradvocate.com/beer/styles/), reducing the number of beer styles from 105 to 45.
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ## Ratings
 </span>
 
@@ -46,13 +46,12 @@ To understand the seasonal analysis, it is important to understand how the beers
 
 The rating metrics is computed based on the five other scores with the following formula:
 
-<span style="color: #8B0000;">
-  $ \text{rating} = 0.06 \times \text{appearance} + 0.24 \times \text{aroma} + 0.4 \times \text{taste} + 0.1 \times \text{mouthfeel} + 0.2 \times \text{overall} $
-</span>
+
+$ \text{rating} = 0.06 \times \text{appearance} + 0.24 \times \text{aroma} + 0.4 \times \text{taste} + 0.1 \times \text{mouthfeel} + 0.2 \times \text{overall} $
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated.
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ### 1. Seasonal influence on beer ratings for ABV category
 </span>
 
@@ -64,13 +63,13 @@ TODO: ADD SEASONAL RATINGS GRAPHS
 
 To answer these questions, we group beers by season and alcohol content category, and compare their scores. As we can see, ratings are not constant throughout the year, and high and low peaks can be observed for both low and high ABV beers. In winter, high-alcohol content beers reach their highest peak, while low-alcohol content beers reach their lowest peak at this time of year in terms of rating. In summer, on the other hand, high ABV beers are the least rated. And in spring, low ABV beers reach their highest rating. We can therefore conclude that during the warm season (summer, spring), low-alcohol beers are preferred, while as the cold season (winter) approaches, users tend to favor high-alcohol beers.
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ### 2. Seasonal trend in beer ratings at the scale of the United States
 </span>
 
 TODO: ADD GRAPH WITH MEAN RATINGS FOR PALE LAGER PER SEASON
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ### 3. Seasonal trend in beer ratings across the states
 </span>
 
@@ -88,11 +87,11 @@ In winter, the West favors Wild beer and Lambic-Unblended, while Montana stands 
 
 What we can conclude from this is that, as the seasons progress, beer style preferences shift, with fruitier, lighter styles being preferred in warmer months and stronger beers like Stout and Dark Mild Ale becoming more popular as the temperature cools.
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ## Sentiment and semantic analysis
 </span>
 
-<span class="dark-red-heading">
+<span style="color: #8B0000;">
   ### 1. Sentiment analysis
 </span>
 
