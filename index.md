@@ -77,9 +77,26 @@ What we can conclude from this is that, as the seasons progress, beer style pref
 
 ## Sentiment and semantic analysis
 
+In addition to numerical ratings, **textual reviews** play a crucial role in understanding consumer preferences and perceptions of beer. Sentiment and semantic analysis are powerful techniques that allow us to extract insights from the textual data in the BeerAdvocate reviews.
+
 ### 1. Sentiment analysis
 
+When it comes to beer reviews, the words that people use can tell us a lot about their preferences. In this section, we dive into the language of beer reviews to uncover which words are linked to positive ratings and which ones are tied to negative feedback. By analyzing these words, we can start to understand what makes a beer enjoyable for consumers, and what could be causing disappointment.
+
+To make things simpler, we categorized beers based on their ratings: beers with ratings greater than 4/5 are considered **highly rated** (positive), while those with ratings lower than 3/5 are seen as **poorly rated** (negative). This approach allows us to focus on the key aspects that reviewers appreciate or dislike in their beers.
+
+To illustrate this, we generated two word clouds: one for the most common word pairs found in positive reviews and another for those in negative reviews. At first glance, it was clear that some word pairs were predominantly associated with high-rated beers, while others appeared more often in lower-rated ones. These word clouds provided a valuable insight into the language of beer enthusiasts, highlighting the key aspects they appreciate or dislike in their beer experiences.
+
+<figure style="text-align: center;">
+  <img src="{{ site.baseurl }}/src/graph/beer_wordcloud.png" alt="Sentiment Analysis WordCloud" width="600">
+</figure>
+
+
+
+
 #### 2. Semantic analysis
+
+TODO: ADD A SEMANTIC ANALYSIS INTRODUCTION
 
 ## Conclusion
 
