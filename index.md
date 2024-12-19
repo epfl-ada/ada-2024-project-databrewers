@@ -13,8 +13,8 @@ Beers have been enjoyed for centuries across cultures, and today beer enthusiast
 
 For our study, we were provided with two distinct datasets. The first one contained data from the BeerAdvocate website, while the second contained data from the RateBeer website.  After some preliminary analysis, we decided that the data from the BeerAdvocate website was enough to conduct our analysis.
 
-<img src="src/graph/introduction/description_rb.html" alt="Rate Beer" width="500" />
-<img src="src/graph/introduction/description_ba.html" alt="Beer Advocate" width="500" />
+<img src="/src/graph/introduction/description_rb.html" alt="Rate Beer" width="500" />
+<img src="/src/graph/introduction/description_ba.html" alt="Beer Advocate" width="500" />
  
 
 
