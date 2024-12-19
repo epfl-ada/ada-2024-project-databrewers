@@ -63,13 +63,17 @@ To answer these questions, we group beers by season and alcohol content category
 
 ### 2. Seasonal trend in beer ratings at the scale of the United States
 
-{% include beer_styles_seasons_ratings.html %}
+<div style="display: flex; justify-content: center;">
+  {% include beer_styles_seasons_ratings.html %}
+</div>
 
 ### 3. Seasonal trend in beer ratings across the states
 
 We now know that beer style preferences do not vary much across the United States over the seasons. But will this also translate to the state level? Or will we see more variation by state?
 
-{% include highest_rated_beer_styles_by_states_season.html %}
+<div style="display: flex; justify-content: center;">
+  {% include highest_rated_beer_styles_by_states_season.html %}
+</div>
 
 By visualizing the highest-rated beer styles by state and season, we can now see more clearly how this evolves over the seasons. To simplify our analysis, we regroup the states by region as follows:
 - **Northeast** (e.g. New York, Massachusetts)
