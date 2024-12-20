@@ -217,14 +217,16 @@ def word_analysis_by_time_period(reviews_dict, word):
 
     return word_counts
 
-
 def analyze_and_visualize_group_occurrences(groups, reviews_by_season):
     num_groups = len(groups)
-    fig, axes = plt.subplots(nrows=num_groups, ncols=1, figsize=(10, 5 * num_groups))
+    num_cols = 2  
+    num_rows = (num_groups + num_cols - 1) // num_cols
+
+    fig, axes = plt.subplots(nrows=num_rows, ncols=num_cols, figsize=(15, 5 * num_rows))
     fig.tight_layout(pad=5.0)
 
-    if num_groups == 1:
-        axes = [axes]
+    # Flatten the axes for easy iteration
+    axes = axes.flatten()
 
     # Iterate through the groups and visualize their occurrences
     for idx, (group_name, word_list) in enumerate(groups.items()):
@@ -249,11 +251,15 @@ def analyze_and_visualize_group_occurrences(groups, reviews_by_season):
         # Plot the group's data as a bar chart
         ax = axes[idx]
         ax.bar(group_percentages.keys(), group_percentages.values(), color='skyblue')
-        ax.set_title(f"Percentage of positive reviews mentioning {group_name} related terms by season")
-        ax.set_ylabel("Percentage of positive reviews mentioning {group_name} related terms")
+        ax.set_title(f"Positive reviews mentioning {group_name} related terms by season [%]")
+        ax.set_ylabel(f"Positive reviews mentioning {group_name} related terms [%]")
         ax.set_xlabel("Season")
         ax.set_ylim(0, 100)
         ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Hide any unused subplots
+    for idx in range(len(groups), len(axes)):
+        axes[idx].set_visible(False)
 
     plt.show()
 
