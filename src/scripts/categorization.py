@@ -292,8 +292,7 @@ taste_groups = {
     'Herbal': ['herbal', 'herbs', 'grass', 'grassy', 'hay', 'floral', 'florals', 'flower', 'flowers', 'leafy'],
     'Sweet': ['sweet', 'sugary'],
     'Bitter': ['bitter'],
-    'Sour': ['sour', 'acidic'],
-    'Spicy': ['spicy', 'spice', 'cinnamon']
+    'Sour': ['sour', 'acidic']
 }
 
 def get_groups():
