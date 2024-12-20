@@ -132,42 +132,42 @@ Some word pairs, like **"medium bodied"** appeared in both positive and negative
 These results allow us to determine the characteristic that an ideal beer should have, and those that it should not have, in order to be enjoyed by consumers.
 
 
-#### 2. Semantic analysis
+### 2. Semantic analysis
 
 While sentiment analysis uncovers the emotional tone behind a review, semantic analysis digs deeper into the meanings of words, helping us understand how different characteristics are associated with the beers' appeal. It’s not just about whether a beer is liked or disliked; it’s about why it stands out in the first place.
 By analyzing the specific language used in high rated reviews, we can uncover the key qualities that turn a simple beer into a fan favorite. In this section, we will dive into a semantic comparison of beer reviews across seasons to explore which characteristics define the most-loved beers in each time of the year. 
 
-##### Aroma
+#### Aroma
 
 <div style="display: flex; justify-content: center;">
   {% include aroma_treemap.html %}
 </div>
 
-In each season, specific aroma preferences emerge, shaping the appeal of beers based on what people enjoy the most. Based on our analysis of aroma reviews, the following trends stand : during winter, beers with rich, warm aromas are favored. Terms such as « malt », « caramel », « chocolate », and « roasted » are prominent, indicating a preference for fuller-bodied beers. In spring, there is a noticeable shift in aroma preferences. While the rich, malty notes remain popular, there is an increase in fruity terms like « citrus » and « grapefruit ». On the other side, summer introduces a different set of preferred aromas. Here, herbal scents become more prominent, such as « floral », « herbal » and « grassy » terms. These refreshing aromas provide a crisp and clean feeling, making beers more enjoyable in warmer weather. Finally, as autumn arrives, there is a resurgence of malt-based aromas, similar to winter. However, there is also an interesting interplay with fruity terms, which become less prominent compared to malty ones.
+In each season, specific **aroma** preferences emerge, shaping the appeal of beers based on what people enjoy the most. Based on our analysis of aroma reviews, the following trends stand : during winter, beers with rich, warm aromas are favored. Terms such as « malt », « caramel », « chocolate », and « roasted » are prominent, indicating a preference for fuller-bodied beers. In spring, there is a noticeable shift in aroma preferences. While the rich, malty notes remain popular, there is an increase in fruity terms like « citrus » and « grapefruit ». On the other side, summer introduces a different set of preferred aromas. Here, herbal scents become more prominent, such as « floral », « herbal » and « grassy » terms. These refreshing aromas provide a crisp and clean feeling, making beers more enjoyable in warmer weather. Finally, as autumn arrives, there is a resurgence of malt-based aromas, similar to winter. However, there is also an interesting interplay with fruity terms, which become less prominent compared to malty ones.
 
-##### Mouthfeel
+#### Mouthfeel
 
 <div style="display: flex; justify-content: center;">
   {% include mouthfeel_treemap.html %}
 </div>
 
-When it comes to mouthfeel, the seasonal differences are less pronounced compared to other attributes. However, there are still subtle shifts in preferences that provide insights into what consumers enjoy the most throughout the year. Across the cooler seasons, terms like « rich », « creamy » and « smooth » dominate the reviews, indicating a preference for beers with a full-bodied and velvety texture. These characteristics align well with the comforting appeal of beers during these times of the year. During summer, there is a noticeable decrease in the prevalence of the term « rich ». Instead, lighter and more refreshing descriptors such as « tart » and « thin » start to gain prominence.
+When it comes to **mouthfeel**, the seasonal differences are less pronounced compared to other attributes. However, there are still subtle shifts in preferences that provide insights into what consumers enjoy the most throughout the year. Across the cooler seasons, terms like « rich », « creamy » and « smooth » dominate the reviews, indicating a preference for beers with a full-bodied and velvety texture. These characteristics align well with the comforting appeal of beers during these times of the year. During summer, there is a noticeable decrease in the prevalence of the term « rich ». Instead, lighter and more refreshing descriptors such as « tart » and « thin » start to gain prominence.
 
-##### Palate
+#### Palate
 
 <div style="display: flex; justify-content: center;">
   {% include palate_treemap.html %}
 </div>
 
-The palate of a beer plays a significant role in its overall appeal, and seasonal variations reveal shifting preferences in flavor profiles. During the colder months, sweet terms dominate positive reviews. Words like « sweet », « caramel », and « toffee » are frequently mentioned, reflecting a preference for richer, sweeter flavors that provide warmth and comfort. However, as temperatures rise, acidic terms become more prevalent in positive reviews. Descriptors like « acidic », « citrusy », and « sour » indicate a preference for sharper, more refreshing palates that offer a crisp and invigorating experience.
+The **palate** of a beer plays a significant role in its overall appeal, and seasonal variations reveal shifting preferences in flavor profiles. During the colder months, sweet terms dominate positive reviews. Words like « sweet », « caramel », and « toffee » are frequently mentioned, reflecting a preference for richer, sweeter flavors that provide warmth and comfort. However, as temperatures rise, acidic terms become more prevalent in positive reviews. Descriptors like « acidic », « citrusy », and « sour » indicate a preference for sharper, more refreshing palates that offer a crisp and invigorating experience.
 
-##### Taste
+#### Taste
 
 <div style="display: flex; justify-content: center;">
   {% include taste_treemap.html %}
 </div>
 
-Seasonal variations also reveal distinct preferences for flavor: positive reviews during spring season often highlight fruity notes. Words like « citrus », « grapefruit », and « fruit » are significantly more prevalent, showcasing a clear preference for bright, fresh flavors that resonate with the season's renewal. During winter, malty flavors take center stage in the colder months. Descriptors such as « caramel », «roasted », and « toffee » dominate positive reviews, reflecting a craving for rich, warming tastes that pair well with the season. About autumn, this transitional season sees a blend of fruity and sweet terms in positive reviews. Words like « fruit » and « sweet » become prominent, indicating a preference for beers with both fresh and indulgent flavor profiles as temperatures cool down.
+Seasonal variations also reveal distinct preferences for **taste**: positive reviews during spring season often highlight fruity notes. Words like « citrus », « grapefruit », and « fruit » are significantly more prevalent, showcasing a clear preference for bright, fresh flavors that resonate with the season's renewal. During winter, malty flavors take center stage in the colder months. Descriptors such as « caramel », «roasted », and « toffee » dominate positive reviews, reflecting a craving for rich, warming tastes that pair well with the season. About autumn, this transitional season sees a blend of fruity and sweet terms in positive reviews. Words like « fruit » and « sweet » become prominent, indicating a preference for beers with both fresh and indulgent flavor profiles as temperatures cool down.
 
 
 
