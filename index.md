@@ -71,6 +71,8 @@ To answer these questions, we group beers by season and alcohol content category
 
 ### 2. Seasonal trend in beer ratings at the scale of the United States
 
+From now, we will discuss the seasonal trends when looking at the most rated beers styles at the scale of the United States. The styles were simplified during preprocessing to regroup beers styles with similar characteristic; from these simplified styles, we only kept the one than accounts for at least 2% of the ratings for the following analysis.
+
 <div style="display: flex; justify-content: center; width: 80%;">
   {% include beer_styles_seasons_ratings.html %}
 </div>
