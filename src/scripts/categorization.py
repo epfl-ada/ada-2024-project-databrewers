@@ -256,3 +256,45 @@ def top_styles(ratings):
     styles_above_2_percent = beer_styles_above_2_percent[beer_styles_above_2_percent].index
     ratings_top_styles = ratings[ratings['style_simp'].isin(styles_above_2_percent)]
     return ratings_top_styles
+
+
+
+# Create the different evaluation/criteria groups
+aroma_groups = {
+    'Malt': ['malt', 'malty', 'darker malt', 'roasty', 'roasted', 'smoke', 'smoky', 'toasty', 'nutty', 'nut', 'chocolate', 'toffee', 'caramel', 'biscuit', 'bread'],
+    'Fruity': ['fruit', 'fruity', 'fruits', 'citrus', 'grapefruit'],
+    'Spicy': ['spicy', 'spice', 'cinnamon'],
+    'Herbal': ['herbal', 'herbs', 'grass', 'grassy', 'hay', 'floral', 'florals', 'flower', 'flowers', 'leafy']
+}
+
+palate_groups = {
+    'Sweet': ['sweet', 'sugary'],
+    'Bitter': ['bitter'],
+    'Sour': ['sour', 'acidic'],
+    'Spicy': ['spicy', 'spice', 'cinnamon'],
+}
+
+mouthfeel_groups = {
+    'Creamy': ['creamy', 'cream'],
+    'Smooth': ['smooth', 'smoothness'],
+    'Dry': ['dry', 'dryness'],
+    'Tart': ['tart'],
+    'Flat': ['flat'],
+    'Thin': ['thin'],
+    'Rich': ['rich']
+
+}
+
+taste_groups = {
+    'Malt': ['malt', 'malty', 'darker malt', 'roasty', 'roasted', 'smoke', 'smoky', 'toasty', 'nutty', 'nut', 'chocolate', 'toffee', 'caramel', 'biscuit', 'bread'],
+    'Fruity': ['fruit', 'fruity', 'fruits', 'citrus', 'grapefruit'],
+    'Spicy': ['spicy', 'spice', 'cinnamon'],
+    'Herbal': ['herbal', 'herbs', 'grass', 'grassy', 'hay', 'floral', 'florals', 'flower', 'flowers', 'leafy'],
+    'Sweet': ['sweet', 'sugary'],
+    'Bitter': ['bitter'],
+    'Sour': ['sour', 'acidic'],
+    'Spicy': ['spicy', 'spice', 'cinnamon']
+}
+
+def get_groups():
+    return aroma_groups, palate_groups, mouthfeel_groups, taste_groups

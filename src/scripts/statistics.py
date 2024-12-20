@@ -153,7 +153,7 @@ def test_seasonal_significance_ABV(data, abv_category):
     print(f"Number of ratings per season for '{abv_category}' ABV:")
     print(filtered_data['season'].value_counts())
 
-    season_groups = [group['rating'].dropna().values for _, group in filtered_data.groupby('season')]
+    season_groups = [group['rating'].dropna().values for _, group in filtered_data.groupby('season', observed=False)]
 
     # ANOVA
     if all(len(values) > 1 for values in season_groups) and len(season_groups) > 1:
