@@ -172,7 +172,7 @@ In this project, we explored beer reviews, analyzing patterns in ratings, styles
 
 Our findings reveal that preferences are not only shaped by individual tastes but are also influenced by external factors like weather and cultural trends. Brewers and marketers can use these insights to better align their offerings with consumer expectations. Through this analysis, we hope to contribute to a deeper understanding of the dynamic and evolving beer landscape, offering value to researchers, breweries, and beer lovers alike.
 
-- *⁠*Winter**: Rich, warm aromas of malt, caramel, chocolate and roast dominate. High ABV beers are favored, along with fuller-bodied styles such as Stouts and Barleywines. Mouthfeel preferences tend towards creamy and smooth textures. Sweet flavors, including chocolate and caramel, are prominent.
+- *⁠*Winter:** Rich, warm aromas of malt, caramel, chocolate and roast dominate. High ABV beers are favored, along with fuller-bodied styles such as Stouts and Barleywines. Mouthfeel preferences tend towards creamy and smooth textures. Sweet flavors, including chocolate and caramel, are prominent.
 
 - *⁠*Spring**: Fruity aromas such as citrus and grapefruit appear alongside malty notes. Low to medium-ABV beers gain in popularity, with lighter styles such as Pale Lager and Pale Ale highly rated. Refreshing mouthfeel descriptors such as thin and tart become common. Bright, fresh flavors dominate, reflecting the renewal of the season.
 
