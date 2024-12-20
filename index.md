@@ -9,7 +9,7 @@ Welcome to the official website of the **Databrewers Project** for the **Applied
 
 Beers have been enjoyed for centuries across cultures, and today beer enthusiasts share their experiences and rate their favorite brews on online platforms such as [BeerAdvocate](https://www.beeradvocate.com) and [RateBeer](https://www.ratebeer.com). With a vast number of reviews available online, these platforms have become a gold mine for analyzing trends in beer preferences, consumption patterns, and the factors that influence people’s choices.
 
-Our project focus on how beer ratings and reviews evolve over time, especially with respect to seasonal and long-term changes. How do beer preferences shift across different seasons, and how do climate and geographical factors influence these choices? Does the alcohol content or beer style impact ratings differently depending on the time of year? Furthermore, can we identify specific beers that are consistently linked to certain seasons? By addressing these questions, we aim to provide actionable insights for brewers, marketers, and enthusiasts alike, helping them align their offerings with the dynamic preferences of consumers.
+Our project focuses on how beer ratings and reviews evolve over time, especially with respect to seasonal and long-term changes. How do beer preferences shift across different seasons, and how do climate and geographical factors influence these choices? Does the alcohol content or beer style impact ratings differently depending on the time of year? Furthermore, can we identify specific beers that are consistently linked to certain seasons? By addressing these questions, we aim to provide actionable insights for brewers, marketers, and enthusiasts alike, helping them align their offerings with the dynamic preferences of consumers.
 
 ## Dataset
 
@@ -36,9 +36,9 @@ The diversity of beer styles can make it difficult to compare; to avoid redundan
 
 ## Ratings
 
-To understand the seasonal analysis, it is important to understand how the beers are rated. In both reviews and ratings dataframes, six columns contain metrics (which are a score out of 5): **appearance, aroma, taste, mouthfeel, overall and rating**.
+To understand the seasonal analysis, it is important to understand how the beers are rated. In both reviews and ratings dataframes, six columns contain metrics (which are scores out of 5): **appearance, aroma, taste, mouthfeel, overall and rating**.
 
-The rating metrics is computed based on the five other scores with the following formula:
+The rating metric is computed based on the five other scores with the following formula:
 
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -123,7 +123,7 @@ We generated two word clouds: one for the most common word pairs found in positi
   <img src="{{ site.baseurl }}/src/images/sentiment_analysis.png" alt="Sentiment Analysis WordCloud" width="800">
 </figure>
 
-Certain words and phrases seem to appear a lot for beers that get high marks. Words like **"full bodied"** **"dark chocolate"** and **"roasted malts"** popped up frequently in positive reviews. It highlights beer caractectistics that consumers appreciate.
+Certain words and phrases seem to appear a lot for beers that get high marks. Words like **"full bodied"** **"dark chocolate"** and **"roasted malts"** popped up frequently in positive reviews. It highlights beer charactectistics that consumers appreciate.
 
 There were also words that kept appearing in negative reviews. For instance, phrases like **"light bodied"** and **"yellow color"** seemed to show up more often when beers weren’t getting high marks. These terms seemed to be tied to beers that reviewers weren’t as impressed by.
 
@@ -142,7 +142,7 @@ By analyzing the specific language used in high rated reviews, we can uncover th
   {% include aroma_treemap.html %}
 </div>
 
-In each season, specific **aroma** preferences emerge, shaping the appeal of beers based on what people enjoy the most. Based on our analysis of aroma reviews, the following trends stand : during winter, beers with rich, warm aromas are favored. Terms such as « malt », « caramel », « chocolate », and « roasted » are prominent, indicating a preference for fuller-bodied beers. In spring, there is a noticeable shift in aroma preferences. While the rich, malty notes remain popular, there is an increase in fruity terms like « citrus » and « grapefruit ». On the other side, summer introduces a different set of preferred aromas. Here, herbal scents become more prominent, such as « floral », « herbal » and « grassy » terms. These refreshing aromas provide a crisp and clean feeling, making beers more enjoyable in warmer weather. Finally, as autumn arrives, there is a resurgence of malt-based aromas, similar to winter. However, there is also an interesting interplay with fruity terms, which become less prominent compared to malty ones.
+In each season, specific **aroma** preferences emerge, shaping the appeal of beers based on what people enjoy the most. Based on our analysis of aroma reviews, the following trends stand : during winter, beers with rich, warm aromas are favored. Terms such as "malt", "caramel", "chocolate", and "roasted" are prominent, indicating a preference for fuller-bodied beers. In spring, there is a noticeable shift in aroma preferences. While the rich, malty notes remain popular, there is an increase in fruity terms like "citrus" and "grapefruit". On the other side, summer introduces a different set of preferred aromas. Here, herbal scents become more prominent, such as "floral", "herbal" and "grassy" terms. These refreshing aromas provide a crisp and clean feeling, making beers more enjoyable in warmer weather. Finally, as autumn arrives, there is a resurgence of malt-based aromas, similar to winter. However, there is also an interesting interplay with fruity terms, which become less prominent compared to malty ones.
 
 
 <div style="display: flex; justify-content: center;">
@@ -155,14 +155,14 @@ When it comes to **mouthfeel**, the seasonal differences are less pronounced com
   {% include palate_treemap.html %}
 </div>
 
-The **palate** of a beer plays a significant role in its overall appeal, and seasonal variations reveal shifting preferences in flavor profiles. During the colder months, sweet terms dominate positive reviews. Words like « sweet », « caramel », and « toffee » are frequently mentioned, reflecting a preference for richer, sweeter flavors that provide warmth and comfort. However, as temperatures rise, acidic terms become more prevalent in positive reviews. Descriptors like « acidic », « citrusy », and « sour » indicate a preference for sharper, more refreshing palates that offer a crisp and invigorating experience.
+The **palate** of a beer plays a significant role in its overall appeal, and seasonal variations reveal shifting preferences in flavor profiles. During the colder months, sweet terms dominate positive reviews. Words like "sweet", "caramel", and "toffee" are frequently mentioned, reflecting a preference for richer, sweeter flavors that provide warmth and comfort. However, as temperatures rise, acidic terms become more prevalent in positive reviews. Descriptors like "acidic", "citrusy", and "sour" indicate a preference for sharper, more refreshing palates that offer a crisp and invigorating experience.
 
 
 <div style="display: flex; justify-content: center;">
   {% include taste_treemap.html %}
 </div>
 
-Seasonal variations also reveal distinct preferences for **taste**: positive reviews during spring season often highlight fruity notes. Words like « citrus », « grapefruit », and « fruit » are significantly more prevalent, showcasing a clear preference for bright, fresh flavors that resonate with the season's renewal. During winter, malty flavors take center stage in the colder months. Descriptors such as « caramel », «roasted », and « toffee » dominate positive reviews, reflecting a craving for rich, warming tastes that pair well with the season. About autumn, this transitional season sees a blend of fruity and sweet terms in positive reviews. Words like « fruit » and « sweet » become prominent, indicating a preference for beers with both fresh and indulgent flavor profiles as temperatures cool down.
+Seasonal variations also reveal distinct preferences for **taste**: positive reviews during spring season often highlight fruity notes. Words like "citrus", "grapefruit", and "fruit" are significantly more prevalent, showcasing a clear preference for bright, fresh flavors that resonate with the season's renewal. During winter, malty flavors take center stage in the colder months. Descriptors such as "caramel", "roasted", and "toffee" dominate positive reviews, reflecting a craving for rich, warming tastes that pair well with the season. About autumn, this transitional season sees a blend of fruity and sweet terms in positive reviews. Words like "fruit" and "sweet" become prominent, indicating a preference for beers with both fresh and indulgent flavor profiles as temperatures cool down.
 
 
 
