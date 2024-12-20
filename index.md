@@ -71,7 +71,7 @@ To answer these questions, we group beers by season and alcohol content category
 
 ### 2. Seasonal trend in beer ratings at the scale of the United States
 
-Let's dive into the seasonal trends of the most popular beer styles in the United States! To simplify our analysis, we grouped similar beer styles during pre-processing and focused on the top-rated styles. For this deep dive, we only included styles that accounted for at least 2% of total ratings - highlighting the true favourites among beer enthusiasts.
+Let's dive into the seasonal trends of the most popular beer styles in the United States! To simplify our analysis, we grouped similar beer styles during pre-processing and focused on the top-rated styles. We only included styles that accounted for at least 2% of total ratings - highlighting the true favourites among beer enthusiasts.
 
 <div style="display: flex; justify-content: center; width: 80%;">
   {% include beer_styles_seasons_ratings.html %}
