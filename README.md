@@ -104,9 +104,10 @@ The directory structure of new project looks like this:
 ```
 ├── data                            <- Contains all project data files (where all downloaded files should be)
 │   ├── cleaned                     <- Stores all processed and cleaned datasets
-│
+│ 
+│graph                              <- Contains all the graph visualizations in HTLM for the data story
+│ 
 ├── src                         
-│   ├── graph                       <- Contains all the graph visualizations in HTLM for the data story
 │   ├── scripts     
 │   │   ├── categorization.py       <- Contains the functions for categorizing the dataset (e.g. by ABV, styles)
 │   │   ├── dataloader.py           <- Contains the functions to load the datasets from raw files
@@ -117,7 +118,7 @@ The directory structure of new project looks like this:
 │   │   ├── statistics.py           <- Contains the functions for statistical testing and analysis
 │
 ├── data_cleaning.ipynb             <- Notebook for exploratory data analysis and data cleaning
-├── graph_html.ipynb           <- Notebook showing the graph for the datastory
+├── graph_html.ipynb                <- Notebook showing the graph for the datastory
 ├── milestoneP2.ipynb               <- Notebook showing the results for the milestone P2
 ├── milestoneP3.ipynb               <- Notebook showing the results for the milestone P3
 ├── seasonal_trend_analysis.ipynb   <- Notebook containing the detailled analysis over the seasons and years
