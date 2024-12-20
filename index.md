@@ -40,7 +40,9 @@ To understand the seasonal analysis, it is important to understand how the beers
 
 The rating metrics is computed based on the five other scores with the following formula:
 
-rating = 0.06 * appearance + 0.24 * aroma + 0.4 * taste + 0.1 * mouthfeel + 0.2 * overall
+$$
+\text{Rating} = 0.06 \cdot \text{Appearance} + 0.24 \cdot \text{Aroma} + 0.4 \cdot \text{Taste} + 0.1 \cdot \text{Mouthfeel} + 0.2 \cdot \text{Overall}
+$$
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated.
 
@@ -83,7 +85,7 @@ That said, the magnitude of the observed differences between seasons, while stat
 
 ### 3. Seasonal trend in beer ratings across the states
 
-We now know that beer style preferences do not vary much across the United States over the seasons. But will this also translate to the state level? Or will we see more variation by state?
+While beer style preferences show some variation across the United States over the seasons, it remains limited overall. However, given that the U.S. is a very large country, some regions may not experience the same weather conditions across seasons. This raises the question: will this limited variation persist at the state level, or will we observe greater differences in preferences by state?
 
 <div style="display: flex; justify-content: center;">
   {% include highest_rated_beer_styles_by_states_season.html %}
