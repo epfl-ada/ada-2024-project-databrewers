@@ -71,7 +71,7 @@ To answer these questions, we group beers by season and alcohol content category
 
 ### 2. Seasonal trend in beer ratings at the scale of the United States
 
-From now, we will discuss the seasonal trends when looking at the most rated beers styles at the scale of the United States. The styles were simplified during preprocessing to regroup beers styles with similar characteristic; from these simplified styles, we only kept the one than accounts for at least 2% of the ratings for the following analysis.
+Let's dive into the seasonal trends of the most popular beer styles in the United States! To simplify our analysis, we grouped similar beer styles during pre-processing and focused on the top-rated styles. For this deep dive, we only included styles that accounted for at least 2% of total ratings - highlighting the true favourites among beer enthusiasts.
 
 <div style="display: flex; justify-content: center; width: 80%;">
   {% include beer_styles_seasons_ratings.html %}
@@ -172,7 +172,7 @@ Seasonal variations also reveal distinct preferences for **taste**: positive rev
 
 In this project, we explored beer reviews, analyzing patterns in ratings, styles, and consumer preferences across seasons and regions in the United States. By leveraging numerical ratings and textual reviews, we uncovered insights into how beer preferences vary with alcohol content, seasonal changes, and geographical trends. Sentiment analysis of textual reviews further enriched our understanding, putting light on the aspects the most valued by beer enthusiasts.
 
-Our findings reveal that preferences are not only shaped by individual tastes but are also influenced by external factors like weather and cultural trends. Brewers and marketers can use these insights to better align their offerings with consumer expectations. Through this analysis, we hope to contribute to a deeper understanding of the dynamic and evolving beer landscape, offering value to researchers, breweries, and beer lovers alike.
+Our findings reveal that preferences are not only shaped by individual tastes but are also influenced by external factors like weather and cultural trends. Brewers and marketers can use these insights to better align their offerings with consumer expectations. Through this analysis, we hope to contribute to a deeper understanding of the dynamic and evolving beer landscape, offering value to researchers, breweries, and beer lovers alike. Based on our analysis, we have developed the following recommendations for making the perfect seasonal beer:
 
 - **Winter:** Rich, warm aromas of malt, caramel, chocolate and roast dominate. High ABV beers are favored, along with fuller-bodied styles such as Stouts and Barleywines. Mouthfeel preferences tend towards creamy and smooth textures. Sweet flavors, including chocolate and caramel, are prominent.
 
