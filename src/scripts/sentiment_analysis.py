@@ -118,6 +118,12 @@ def calculate_percentage_of_reviews_containing_bigram(bigrams, reviews):
 
     return percentages
 
+
+
+
+
+    
+
 def compare_high_low(bigram_freq_high, bigram_freq_low, reviews_high, reviews_low):
     """
     Compare the most common bigrams in reviews with high and low ratings.

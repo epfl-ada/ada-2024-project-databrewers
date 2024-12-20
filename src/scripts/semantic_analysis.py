@@ -42,6 +42,8 @@ def top_n_words(reviews,n :int):
     top_20_words = word_freq.most_common(n)
     return top_20_words, word_freq
 
+def filter_positive_reviews(reviews_df, rating_threshold=4):
+    return reviews_df[reviews_df['rating'] >= rating_threshold]
 
 def gen_wordcloud(word_freq):
     # Generate the word cloud
@@ -136,20 +138,22 @@ def process_flavours(text, flavours):
     }
 
 def analyse_flavours(reviews):
-    flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 'sweet', 'bitter', 'sour', 'tart', 'crisp']
+    flavours = ['hoppy']
+    #flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 'sweet', 'bitter', 'sour', 'tart', 'crisp']
     #keep only reviews where (aroma + palate)/2 is greater than 4 and the sum of all flavours is greater than 0
-    reviews = reviews[(reviews['aroma'] + reviews['palate']) / 2 > 4]
+    #reviews = reviews[(reviews['aroma'] + reviews['palate']) / 2 > 4]
     # Process all flavours without using a for loop
     reviews.update(process_flavours(reviews, flavours))
-    reviews = reviews[reviews[flavours].sum(axis=1) > 0]
-    # Step 1: Calculate the total number of reviews per month
+    print(reviews.head())
+    #reviews = reviews[reviews[flavours].sum(axis=1) > 0]
+    # Calculate the total number of reviews per month
     reviews['total_reviews'] = reviews.groupby('month')['cleaned_tokens'].transform('size')
 
-    # Step 2: Normalize each flavor's occurrences by the total reviews for the month
+    #  Normalize each flavor's occurrences by the total reviews for the month
     for flavour in flavours:
         reviews[f"{flavour}_normalized"] = reviews[flavour] / reviews['total_reviews']
 
-    # Step 3: Plot the normalized occurrences
+    # Plot the normalized occurrences
     plt.figure(figsize=(15, 10))
     plt.title('Normalized Flavour Occurrences in US Beer Reviews by Month')
     for flavour in tqdm(flavours):
@@ -160,6 +164,53 @@ def analyse_flavours(reviews):
     plt.show()
     return reviews
 
+
+
+def calculate_normalized_word_percentage(reviews_dict, word_list):
+    """
+    Calculates the normalized percentage of occurrences of a list of words for each season.
+
+    Args:
+    - reviews_dict (dict): Dictionary where keys are seasons and values are DataFrames of reviews.
+    - word_list (list): List of words to analyze.
+
+    Returns:
+    - dict: A dictionary with seasons as keys and percentage occurrences as values.
+    """
+    percentages = {}
+
+    for season, reviews in reviews_dict.items():
+        total_words = reviews['text'].str.split().str.len().sum()  # Total words in the season
+        combined_count = 0
+
+        for word in word_list:
+            combined_count += reviews['text'].str.lower().str.count(rf'\b{word}\b').sum()
+
+        # Normalize by total words for the season
+        percentages[season] = (combined_count / total_words) * 100 if total_words > 0 else 0
+
+    return percentages
+
+
+def visualize_normalized_word_percentages(percentages, group_name):
+    """
+    Visualizes the normalized percentage occurrences of a group of words for each season.
+
+    Args:
+    - percentages (dict): Dictionary where keys are seasons and values are percentages.
+    - group_name (str): Name of the group being analyzed.
+    """
+    time_periods = list(percentages.keys())
+    values = list(percentages.values())
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(time_periods, values, color='skyblue')
+    plt.xlabel('Season')
+    plt.ylabel(f'Normalized Percentage of "{group_name}" words')
+    plt.title(f'Normalized Percentage of "{group_name}" words per season')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
     
     
     
