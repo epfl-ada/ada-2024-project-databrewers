@@ -270,6 +270,8 @@ def group_styles_by_flavours(reviews):
     flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 
                     'sweet', 'bitter', 'sour', 'tart', 'crisp']
     
+    main_styles =  ['IPA', 'Stout', 'Pilsner', 'Porter', 'Lager']
+    
 
     missing_flavours = [flavour for flavour in flavours if flavour not in reviews.columns]
     if missing_flavours:
@@ -284,6 +286,8 @@ def group_styles_by_flavours(reviews):
     normalized_flavours.dropna(inplace=True)
     
     normalized_flavours = normalized_flavours.reset_index()
+    normalized_flavours = normalized_flavours[normalized_flavours['style_simp'].isin(main_styles)]
+    
     
     plot_data = normalized_flavours.melt(
         id_vars='style_simp', 
