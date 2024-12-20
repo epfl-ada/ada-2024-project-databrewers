@@ -17,11 +17,11 @@ For our study, we were provided with two distinct datasets. The first one contai
 
 <div style="display: flex; justify-content: center; gap: 40px;">
   <figure style="text-align: center;">
-    <img src="{{ site.baseurl }}/src/graph/introduction/description_ba.png" alt="Rate Beer dataset" width="300">
+    <img {% include description_ba.png %} alt="Rate Beer dataset" width="300">
     <figcaption style="font-weight: bold;">Beer Advocate Dataset</figcaption>
   </figure>
   <figure style="text-align: center;">
-    <img src="{{ site.baseurl }}/src/graph/introduction/description_rb.png" alt="Rate Beer dataset" width="300">
+    <img {% include description_rb.png %} alt="Rate Beer dataset" width="300">
     <figcaption style="font-weight: bold;">Rate Beer Dataset</figcaption>
   </figure>
 </div>
@@ -120,7 +120,7 @@ To investigate, we categorized beers based on their ratings: beers with ratings 
 We generated two word clouds: one for the most common word pairs found in positive reviews and another for those in negative reviews. At first glance, it was clear that some word pairs were more associated with high-rated beers, while others appeared more often in lower-rated ones. These word clouds provided a valuable insight into the language of beer enthusiasts, highlighting the key aspects they appreciate or dislike in their beer experiences.
 
 <figure style="text-align: center;">
-  <img src="{{ site.baseurl }}/src/graph/sentiment_analysis.png" alt="Sentiment Analysis WordCloud" width="800">
+  <img {% include sentiment_analysis.png %} alt="Sentiment Analysis WordCloud" width="800">
 </figure>
 
 Certain words and phrases seem to appear a lot for beers that get high marks. Words like **"full bodied"** **"dark chocolate"** and **"roasted malts"** popped up frequently in positive reviews. It highlights beer caractectistics that consumers appreciate.
