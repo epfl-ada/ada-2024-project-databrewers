@@ -270,34 +270,21 @@ def group_styles_by_flavours(reviews):
     flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 
                     'sweet', 'bitter', 'sour', 'tart', 'crisp']
     
-    # Validate that all necessary columns are present
+
     missing_flavours = [flavour for flavour in flavours if flavour not in reviews.columns]
     if missing_flavours:
         raise ValueError(f"The following flavour columns are missing in the DataFrame: {missing_flavours}")
-    
-    # Group by 'style_simp' and sum the flavour counts
-    style_flavours = reviews.groupby('style_simp')[flavours].sum()
-    
-    print("Calculating total flavour mentions per style...")
-    
-    
-    # Calculate the total flavour mentions per style
-    style_flavours['total_flavours'] = style_flavours.sum(axis=1)
 
-    
-    # Handle potential division by zero by replacing zeros with NaN
+    style_flavours = reviews.groupby('style_simp')[flavours].sum()
+
+    print("Calculating total flavour mentions per style...")
+    style_flavours['total_flavours'] = style_flavours.sum(axis=1)
     style_flavours['total_flavours'].replace(0, pd.NA, inplace=True)
-    
-    # Normalize the flavour counts to get proportions (percentages)
     normalized_flavours = style_flavours[flavours].div(style_flavours['total_flavours'], axis=0) * 100
-    
-    # Drop styles with zero total flavours to avoid NaN values
     normalized_flavours.dropna(inplace=True)
     
-    # Reset index to turn 'style_simp' back into a column for plotting
     normalized_flavours = normalized_flavours.reset_index()
     
-    # Melt the DataFrame to long format for seaborn
     plot_data = normalized_flavours.melt(
         id_vars='style_simp', 
         value_vars=flavours, 
