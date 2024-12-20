@@ -97,7 +97,7 @@ def plot_abv_seasonal_trends(data, metric):
     - metric: The column name representing the metric to plot
     """
 
-    grouped_data = data.groupby(['season', 'region', 'abv_category'])[metric].mean().reset_index()
+    grouped_data = data.groupby(['season', 'region', 'abv_category'], observed=False)[metric].mean().reset_index()
 
     plt.figure(figsize=(10, 5))
 

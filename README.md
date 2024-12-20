@@ -50,29 +50,23 @@ To uncover regional trends and cultural influences, we analyzed geographic varia
 - **Regional trends in ratings:**
     - Compared the average beer ratings across states to uncover geographic patterns in beer appreciation.
     - Examined differences in review frequency by state to identify regions with higher engagement in beer culture.
+    - Compared the preferred beer styles by states and by seasons 
 
 ---
 
 ## Task 4: Sentiment and semantic analysis
 To understand subjective aspects of beer preferences and their associations with seasons and events, we examined textual reviews using the following approach:
 
-- 4.1: **Word Frequency Analysis:** Identified the most frequent words in reviews across all data.
-- 4.2: **Ambiguous Words:**
-        - Analyzed ambiguous words to classify them as positive or negative based on associated ratings.
-        - Manually tested ambiguous word classifications using 100+ reviews, removing words misclassified more than 20% of the time.
-- 4.3: **Seasonal and Event Associations:**
-        - Identified words linked to specific seasons (e.g., "fresh" and "light" for summer).
-        - Highlighted words associated with cultural events (e.g., "July" for Independence Day).
-- 4.4: **Comparison with Ratings:**
-        - Compared word frequency with the six metrics (taste, aroma, palate, appearance, overall rating, review count) to find correlations.
-        - Analyzed changes in word usage and sentiments across seasons to highlight evolving trends.
+- **Word Frequency Analysis:** Identified the most frequent words in reviews across all data.
+- **Ambiguous Words:**
+    - Analyzed ambiguous words to classify them as positive or negative based on associated ratings.
+    - Manually tested ambiguous word classifications using 100+ reviews, removing words misclassified more than 20% of the time.
+- **Seasonal and Event Associations:**
+    - Identified words linked to specific seasons (e.g., "fresh" and "light" for summer).
+- **Comparison with Ratings:**
+    - Compared word frequency with the six metrics (taste, aroma, palate, overall rating, review count) to find correlations.
+    - Analyzed changes in word usage across seasons to highlight evolving trends.
 
----
-
-## Task 5: Develop a recommendation model based on season and events
-To create a “time fresco” that suggests the ideal beer for each season or festivity, we aimed to design a visually engaging guide for industry professionals.
-
-- **Recommendation model construction:** Build a recommendation model that takes into account the time of year, location, and events.
 
 ## Proposed timeline
 
@@ -82,13 +76,11 @@ To create a “time fresco” that suggests the ideal beer for each season or fe
 - **Data story**: 20th December
 
 ## Organization within the team
-- Eugénie Cyrot: Seasonal trend analysis (years, style, US level)
-- Clémence Kiehl: Sentiment analysis 
-- Marin Philippe: Beer style analysis, Semantic analysis
-- Cléo Renaud: Sentiment analysis, Website for the datastory, READme
-- Pauline Theimer-Lienhard: Seasonal trend analysis (state level, abv), Organization of the repository (scripts, notebook)
-
-
+- Eugénie Cyrot: Data exploration analysis (ratings), seasonal trend analysis (years, style, US level), plot introduction datastory
+- Clémence Kiehl: Data exploration analysis (reviews), sentiment analysis, Semantic analysis by season
+- Marin Philippe: Data exploration analysis (reviews, beers style), beer style analysis, semantic analysis,
+- Cléo Renaud: Sentiment analysis, modularization sentiment analysis, website for the datastory, READme, text for introduction datastory
+- Pauline Theimer-Lienhard: Data exploration analysis (ratings), seasonal trend analysis (state level, alcohol), organization of the repository (scripts, notebook)
 
 ## Quickstart
 
@@ -125,7 +117,7 @@ The directory structure of new project looks like this:
 │   │   ├── statistics.py           <- Contains the functions for statistical testing and analysis
 │
 ├── data_cleaning.ipynb             <- Notebook for exploratory data analysis and data cleaning
-├── data_story_htlm.ipynb           <- Notebook showing the graph for the datastory
+├── graph_html.ipynb           <- Notebook showing the graph for the datastory
 ├── milestoneP2.ipynb               <- Notebook showing the results for the milestone P2
 ├── milestoneP3.ipynb               <- Notebook showing the results for the milestone P3
 ├── seasonal_trend_analysis.ipynb   <- Notebook containing the detailled analysis over the seasons and years
