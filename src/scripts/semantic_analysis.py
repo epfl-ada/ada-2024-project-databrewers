@@ -250,6 +250,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def group_styles_by_flavours(reviews):
     """
     Groups beer reviews by style, normalizes flavour mentions, and plots the distribution.
@@ -266,21 +270,21 @@ def group_styles_by_flavours(reviews):
     flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 
                     'sweet', 'bitter', 'sour', 'tart', 'crisp']
     
-    # Validate that all necessary columns are present
+
     missing_flavours = [flavour for flavour in flavours if flavour not in reviews.columns]
     if missing_flavours:
         raise ValueError(f"The following flavour columns are missing in the DataFrame: {missing_flavours}")
+
     style_flavours = reviews.groupby('style_simp')[flavours].sum()
+
     print("Calculating total flavour mentions per style...")
     style_flavours['total_flavours'] = style_flavours.sum(axis=1)
     style_flavours['total_flavours'].replace(0, pd.NA, inplace=True)
     normalized_flavours = style_flavours[flavours].div(style_flavours['total_flavours'], axis=0) * 100
-
     normalized_flavours.dropna(inplace=True)
-
+    
     normalized_flavours = normalized_flavours.reset_index()
     
-    # Melt the DataFrame to long format for seaborn
     plot_data = normalized_flavours.melt(
         id_vars='style_simp', 
         value_vars=flavours, 
@@ -300,13 +304,23 @@ def group_styles_by_flavours(reviews):
         palette='Set2'  # Choose a color palette for better distinction
     )
     
+    # Set plot titles and labels
     plt.title('Normalized Flavour Occurrences in US Beer Reviews by Style', fontsize=16)
     plt.xlabel('Beer Style', fontsize=14)
     plt.ylabel('Percentage of Flavour Mentions (%)', fontsize=14)
+    
+    # Rotate x-axis labels for better readability
     plt.xticks(rotation=45, ha='right', fontsize=12)
+    
+    # Adjust legend
     plt.legend(title='Flavour', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=12)
+    
+    # Improve layout to prevent clipping of labels and legend
     plt.tight_layout()
+    
+    # Display the plot
     plt.show()
+    
     return normalized_flavours
 
 
