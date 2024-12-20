@@ -419,5 +419,57 @@ def create_treemap(word_percentages, category_name, season):
 
     fig.show()
     
+# Function to preprocess and extract words related to the attributes from reviews
+def preprocess_text_for_attribute(reviews, related_words):
+    all_words = []
+    for review in reviews['cleaned_tokens']:  
+        for word in review:
+            if word in related_words:
+                all_words.append(word)
+    return all_words
+
+def generate_season_wordclouds(season_name, season_reviews, aroma_words_list, palate_words_list, mouthfeel_words_list, taste_words_list):
+    """
+    Generates a 2x2 subplot with word clouds for aroma, palate, mouthfeel, and taste for a given season.
+
+    Parameters:
+    - season_name: The name of the season (e.g., "Winter", "Spring").
+    - season_reviews: A dictionary containing reviews for each season.
+    - aroma_words_list: List of words associated with aroma.
+    - palate_words_list: List of words associated with palate.
+    - mouthfeel_words_list: List of words associated with mouthfeel.
+    - taste_words_list: List of words associated with taste.
+    """
     
+    # Preprocess reviews for each characteristic
+    palate_words = preprocess_text_for_attribute(season_reviews, palate_words_list)
+    aroma_words = preprocess_text_for_attribute(season_reviews, aroma_words_list)
+    mouthfeel_words = preprocess_text_for_attribute(season_reviews, mouthfeel_words_list)
+    taste_words = preprocess_text_for_attribute(season_reviews, taste_words_list)
+
+    words_data = {
+        "Palate": palate_words,
+        "Aroma": aroma_words,
+        "Mouthfeel": mouthfeel_words,
+        "Taste": taste_words
+    }
+
+    # Generate 2x2 subplots
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+    fig.suptitle(f"Word clouds for beer characteristics: {season_name}", fontsize=16)
+
+    for ax, (attribute, words) in zip(axes.flat, words_data.items()):
+        word_freq = Counter(words)
+        if len(word_freq) > 0:
+            wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_freq)
+            ax.imshow(wordcloud, interpolation='bilinear')
+            ax.axis("off")
+            ax.set_title(attribute, fontsize=12)
+        else:
+            ax.text(0.5, 0.5, "No data available", ha='center', va='center', fontsize=12)
+            ax.axis("off")
+
+    plt.tight_layout(rect=[0, 0, 1, 0.95]) 
+    plt.show()
+
     
