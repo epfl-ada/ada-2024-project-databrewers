@@ -133,42 +133,139 @@ def count_flavour_occurrences(text, flavour):
     if count > 0:
         return 1
     return count
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.feature_extraction.text import CountVectorizer
 
-# Define a function to process the reviews for each flavour
 def process_flavours(text, flavours):
-    return {
-        flavour: text['cleaned_tokens'].progress_apply(count_flavour_occurrences, args=(flavour,))
-        for flavour in flavours
-    }
+    """
+    Process the 'cleaned_tokens' column to count occurrences of each flavour.
+    
+    Parameters:
+    - text: pd.DataFrame containing the 'cleaned_tokens' column.
+    - flavours: list of flavour strings to count.
+    
+    Returns:
+    - pd.DataFrame with counts of each flavour.
+    """
+    # Initialize CountVectorizer with the specified flavours as the vocabulary
+    vectorizer = CountVectorizer(vocabulary=flavours, binary=False)
+    
+    # If 'cleaned_tokens' are lists, join them into strings
+    if text['cleaned_tokens'].dtype == 'object' and isinstance(text['cleaned_tokens'].iloc[0], list):
+        text['cleaned_tokens'] = text['cleaned_tokens'].apply(lambda tokens: ' '.join(tokens))
+    
+    # Fit and transform the 'cleaned_tokens' to get counts
+    counts = vectorizer.transform(text['cleaned_tokens'])
+    
+    # Convert the counts to a DataFrame
+    counts_df = pd.DataFrame(counts.toarray(), columns=flavours, index=text.index)
+    
+    return counts_df
 
 def analyse_flavours(reviews: pd.DataFrame):
-    flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 'sweet', 'bitter', 'sour', 'tart', 'crisp']
-    #keep only reviews where (aroma + palate)/2 is greater than 4 and the sum of all flavours is greater than 0
+    """
+    Analyze flavour occurrences in beer reviews and plot normalized occurrences over time.
+    
+    Parameters:
+    - reviews: pd.DataFrame containing beer reviews with columns ['aroma', 'palate', 'cleaned_tokens', 'month'].
+    
+    Returns:
+    - pd.DataFrame with additional flavour count and normalization columns.
+    """
+    # Define all flavours
+    all_flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 
+                    'sweet', 'bitter', 'sour', 'tart', 'crisp']
+    
+    # Define primary and other flavours
+    primary_flavours = ['citrus', 'sweet', 'bitter']
+    other_flavours = [flavour for flavour in all_flavours if flavour not in primary_flavours]
+    
+    # Drop reviews with missing 'aroma' or 'palate'
     reviews = reviews.dropna(subset=['aroma', 'palate'])
-    reviews = reviews[(reviews['aroma'] + reviews['palate'])  >= 8.0]
-    # Process all flavours without using a for loop
-    reviews = process_flavours(reviews, flavours)
-    reviews = reviews[reviews[flavours].sum(axis=1) > 0]
-    # Step 1: Calculate the total number of reviews per month
-    reviews['total_reviews'] = reviews.groupby('month')['cleaned_tokens'].transform('size')
-
-    # Step 2: Normalize each flavor's occurrences by the total reviews for the month
-    print("Normalizing flavour occurrences...")
-    reviews[[f"{flavour}_normalized" for flavour in flavours]] = reviews[flavours].div(reviews['total_reviews'], axis=0)
+    
+    # Keep reviews where the sum of 'aroma' and 'palate' is >= 8 (i.e., average >= 4)
+    reviews = reviews[(reviews['aroma'] + reviews['palate']) >= 8.0]
+    
+    # Process all flavours using the optimized process_flavours function
+    flavour_counts = process_flavours(reviews, all_flavours)
+    
+    # Add flavour counts to the reviews DataFrame
+    reviews = pd.concat([reviews, flavour_counts], axis=1)
+    
+    # Keep only reviews where the sum of all flavour counts is > 0
+    reviews = reviews[flavour_counts.sum(axis=1) > 0]
+    
+    # This sums up all flavour counts for each month
+    total_flavour_mentions_per_month = flavour_counts.groupby(reviews['month']).transform('sum').sum(axis=1)
+    reviews['total_flavour_mentions'] = total_flavour_mentions_per_month
+    
+    print("Normalizing flavour occurrences by total flavour mentions per month...")
+    
+    # Normalize flavour counts by total_flavour_mentions
+    normalized_columns = [f"{flavour}_normalized" for flavour in all_flavours]
+    reviews[normalized_columns] = flavour_counts.div(reviews['total_flavour_mentions'], axis=0)
+    
     print("Flavour occurrences normalized.")
-    plot_data = reviews.melt(id_vars=['month'], value_vars=[f"{f}_normalized" for f in flavours],
-                         var_name='flavour', value_name='normalized_occurrence')
-    plot_data['flavour'] = plot_data['flavour'].str.replace('_normalized', '')
-
-
-    # Plot
-    plt.figure(figsize=(15, 10))
-    sns.lineplot(data=plot_data, x='month', y='normalized_occurrence', hue='flavour')
-    plt.title('Normalized Flavour Occurrences in US Beer Reviews by Month')
-    plt.xlabel('Month')
-    plt.ylabel('Normalized Occurrences')
-    plt.legend(title='Flavour')
+    
+    # Prepare data for plotting
+    plot_data = reviews.melt(
+        id_vars=['month'], 
+        value_vars=normalized_columns,
+        var_name='flavour', 
+        value_name='normalized_occurrence'
+    )
+    
+    # Clean the 'flavour' column by removing '_normalized'
+    plot_data['flavour'] = plot_data['flavour'].str.replace('_normalized', '', regex=False)
+    
+    # Convert 'month' to datetime if it's not already
+    if not pd.api.types.is_datetime64_any_dtype(plot_data['month']):
+        plot_data['month'] = pd.to_datetime(plot_data['month'])
+    
+    # Sort by month for proper plotting
+    plot_data = plot_data.sort_values('month')
+    
+    # Separate data into primary and other flavours
+    primary_plot_data = plot_data[plot_data['flavour'].isin(primary_flavours)]
+    other_plot_data = plot_data[plot_data['flavour'].isin(other_flavours)]
+    
+    # Set up the plotting environment with two subplots
+    fig, axes = plt.subplots(2, 1, figsize=(15, 20), sharex=True)
+    
+    # Plot for Primary Flavours
+    sns.lineplot(
+        data=primary_plot_data, 
+        x='month', 
+        y='normalized_occurrence', 
+        hue='flavour', 
+        marker='o', 
+        ax=axes[0]
+    )
+    axes[0].set_title('Normalized Occurrences of Citrus, Sweet, and Bitter Flavours Over Time')
+    axes[0].set_xlabel('Month')
+    axes[0].set_ylabel('Normalized Occurrences')
+    axes[0].legend(title='Flavour')
+    
+    # Plot for Other Flavours
+    sns.lineplot(
+        data=other_plot_data, 
+        x='month', 
+        y='normalized_occurrence', 
+        hue='flavour', 
+        marker='o', 
+        ax=axes[1]
+    )
+    axes[1].set_title('Normalized Occurrences of Other Flavours Over Time')
+    axes[1].set_xlabel('Month')
+    axes[1].set_ylabel('Normalized Occurrences')
+    axes[1].legend(title='Flavour')
+    
+    # Improve layout
+    plt.tight_layout()
     plt.show()
+    
     return reviews
 
 def group_styles_by_flavours(reviews):
