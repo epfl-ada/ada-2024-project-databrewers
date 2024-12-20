@@ -117,7 +117,7 @@ The directory structure of new project looks like this:
 │   │   ├── statistics.py           <- Contains the functions for statistical testing and analysis
 │
 ├── data_cleaning.ipynb             <- Notebook for exploratory data analysis and data cleaning
-├── data_story_htlm.ipynb           <- Notebook showing the graph for the datastory
+├── graph_html.ipynb           <- Notebook showing the graph for the datastory
 ├── milestoneP2.ipynb               <- Notebook showing the results for the milestone P2
 ├── milestoneP3.ipynb               <- Notebook showing the results for the milestone P3
 ├── seasonal_trend_analysis.ipynb   <- Notebook containing the detailled analysis over the seasons and years

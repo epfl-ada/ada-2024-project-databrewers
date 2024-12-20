@@ -40,7 +40,15 @@ To understand the seasonal analysis, it is important to understand how the beers
 
 The rating metrics is computed based on the five other scores with the following formula:
 
-rating = 0.06 * appearance + 0.24 * aroma + 0.4 * taste + 0.1 * mouthfeel + 0.2 * overall
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+$$
+\text{Rating} = 0.06 \cdot \text{Appearance} + 0.24 \cdot \text{Aroma} + 0.4 \cdot \text{Taste} + 0.1 \cdot \text{Mouthfeel} + 0.2 \cdot \text{Overall}
+$$
+
+
 
 The rating metric takes into account all other metrics, weighted by their importance; therefore, for numerical study of the ratings, only the rating metric will be investigated.
 
@@ -83,7 +91,7 @@ That said, the magnitude of the observed differences between seasons, while stat
 
 ### 3. Seasonal trend in beer ratings across the states
 
-We now know that beer style preferences do not vary much across the United States over the seasons. But will this also translate to the state level? Or will we see more variation by state?
+While beer style preferences show some variation across the United States over the seasons, it remains limited overall. However, given that the U.S. is a very large country, some regions may not experience the same weather conditions across seasons. This raises the question: will this limited variation persist at the state level, or will we observe greater differences in preferences by state?
 
 <div style="display: flex; justify-content: center;">
   {% include highest_rated_beer_styles_by_states_season.html %}
@@ -126,7 +134,44 @@ These results allow us to determine the characteristic that an ideal beer should
 
 #### 2. Semantic analysis
 
-TODO: ADD A SEMANTIC ANALYSIS INTRODUCTION
+While sentiment analysis uncovers the emotional tone behind a review, semantic analysis digs deeper into the meanings of words, helping us understand how different characteristics are associated with the beers' appeal. It’s not just about whether a beer is liked or disliked; it’s about why it stands out in the first place.
+By analyzing the specific language used in high rated reviews, we can uncover the key qualities that turn a simple beer into a fan favorite. In this section, we will dive into a semantic comparison of beer reviews across seasons to explore which characteristics define the most-loved beers in each time of the year. 
+
+##### Winter: the warmth of rich flavors
+
+Winter brings a shift in beer preferences, with consumers favoring beers that provide warmth and depth. The colder months seem to drive people toward richer, fuller beers. In this section, we explore the most frequently used words in positively rated beer reviews during winter, across four distinct aspects: **palate, aroma, mouthfeel, and taste.**
+
+- **Palate**: In winter, beer drinkers often seek bold flavors that leave a lasting impression. The graph below highlights the most common words associated with the palate of highly-rated winter beers, showcasing the preferences for richer
+- **Aroma**: The aroma plays a crucial role in winter beer enjoyment. As the colder months call for comforting and complex scents, the plot below reveals the most frequent descriptors found in positive reviews, highlighting the
+- **Mouthfeel**: A smooth, rich mouthfeel is a key feature for many winter beers.
+- **Taste**: Finally, the taste of winter beers is often characterized by more robust flavors. The graph for this section shows the most frequent words found in positive reviews of winter beers, revealing the complex, layered tastes that make these brews particularly satisfying during the colder months.
+
+##### Spring: light and refreshing notes
+
+As the days get warmer and nature starts to bloom, beer preferences shift toward lighter, more refreshing options. In this section, we explore the most frequently used words in positively rated beer reviews during spring, again focusing on the palate, aroma, mouthfeel, and taste.
+
+- **Palate**: Spring beers tend to favor lighter profiles. The plot below highlights the most commonly used words to describe the palate of spring beers, showing a preference for 
+- **Aroma**: The aroma of spring beers often evokes a sense of freshness and floral notes. In this plot, we see the most frequent descriptors used for spring beer aromas 
+- **Mouthfeel**: A crisp and clean mouthfeel is highly appreciated in spring beers. The graph here showcases the most common words related to mouthfeel in positive reviews, revealing preferences for beers with a …. texture.
+- **Taste**: Spring beers tend to be flavorful yet not too heavy. The plot for taste reveals the common words used to describe the flavors of highly rated spring beers, showing a preference for beers with …. tastes that align with the season’s rejuvenating atmosphere.
+
+##### Summer: bold and fruity sensations
+
+Summer is a time for outdoor activities, and beer preferences reflect the need for brews that are both refreshing and flavorful. Summer beers are often characterized by bold, fruity flavors. This section delves into the most frequently used words in positively rated beer reviews during the summer months, focusing on palate, aroma, mouthfeel, and taste.
+
+- **Palate**: Summer beers are known for their refreshing palate. The graph below highlights the most common words used to describe the palate of highly-rated summer beers, emphasizing a preference for beers that are …. and easy to drink under the sun.
+- **Aroma**: The aromas of summer beers often evoke bright, fruity, and floral scents. The plot for this section shows the most frequent descriptors found in positive reviews, revealing a trend toward …. profiles that appeal to summer beer drinkers.
+- **Mouthfeel**: In the heat of summer, a refreshing, clean mouthfeel is a priority. The graph here displays the most common words used to describe the mouthfeel in summer beers, showing a preference 
+- **Taste**: Taste in summer beers leans toward fruit-forward and thirst-quenching flavors. The plot below reveals the most common words used to describe the taste of highly-rated summer beers, showing 
+
+##### Fall: complex and hearty brews
+
+As the temperatures begin to cool and the leaves change, beer drinkers look for brews that offer complexity and warmth. Fall is the season for richer, spicier, and more robust beers that pair perfectly with autumn flavors. In this section, we examine the most frequently used words in positively rated beer reviews during fall, again analyzing the palate, aroma, mouthfeel, and taste.
+
+- **Palate**: Fall beers are often characterized by a fuller, more complex palate. The plot below highlights the most common words used to describe the palate of highly-rated fall beers, 
+- **Aroma**: The aroma of fall beers often includes warm, spicy, and earthy notes. The graph here displays the most frequent descriptors found in positive reviews of fall beers, showing a trend towards …… aromas that are associated with the season's cooler weather.
+- **Mouthfeel**: A rich, full-bodied mouthfeel is key for many fall beers. The plot here presents the most commonly used words to describe mouthfeel, indicating a preference for beers with a …texture that complements the richness of the season.
+- **Taste**: Taste in fall beers tends to be deep and satisfying, with more robust and spiced flavors. The graph below highlights the most common words used to describe the taste of highly-rated fall beers, showing a shift toward flavors that match the season's warmth and complexity.
 
 ## Conclusion
 
