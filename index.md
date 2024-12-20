@@ -137,6 +137,10 @@ These results allow us to determine the characteristic that an ideal beer should
 While sentiment analysis uncovers the emotional tone behind a review, semantic analysis digs deeper into the meanings of words, helping us understand how different characteristics are associated with the beers' appeal. It’s not just about whether a beer is liked or disliked; it’s about why it stands out in the first place.
 By analyzing the specific language used in high rated reviews, we can uncover the key qualities that turn a simple beer into a fan favorite. In this section, we will dive into a semantic comparison of beer reviews across seasons to explore which characteristics define the most-loved beers in each time of the year. 
 
+<div style="display: flex; justify-content: center;">
+  {% include mouthfeel_treemap.html.html %}
+</div>
+
 ##### Winter: the warmth of rich flavors
 
 Winter brings a shift in beer preferences, with consumers favoring beers that provide warmth and depth. The colder months seem to drive people toward richer, fuller beers. In this section, we explore the most frequently used words in positively rated beer reviews during winter, across four distinct aspects: **palate, aroma, mouthfeel, and taste.**
