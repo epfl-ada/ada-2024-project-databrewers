@@ -67,16 +67,16 @@ To answer these questions, we group beers by season and alcohol content category
   {% include beer_styles_seasons_ratings.html %}
 </div>
 
-**Pale Lager** has its best ratings around spring and worse around winter, with a difference of about 0.1. Some may not consider this a sufficient difference, but remember that there are more than 100k ratings for this beer style. For other styles, the difference is harder to see. With an ANOVA test, some trends in rating variability across seasons emerge: 
+Pale Lager has its best ratings around spring and worse around winter, with a difference of about 0.1. Some may not consider this a sufficient difference, but remember that there are more than 100k ratings for this beer style. For other styles, the difference is harder to see. With an ANOVA test, some trends in rating variability across seasons emerge: 
 
 - **Warmer months**:  
-  Lighter styles such as **Pale Lager**, **Pale Ale**, **IPA**, **Wild Beer**, **Amber/Red Ale**, **Brown Ale**, and **Strong Ale** perform better in the spring and summer. These styles score higher in the warmer months, consistent with the preference for lighter, more refreshing beers during this time. **Pale Lager** and IPA** show the most improvement in summer, while Amber/Red Ale** has the highest ratings in summer compared to other seasons. 
+  Lighter styles such as Pale Lager, Pale Ale, IPA, Wild Beer, Amber/Red Ale, Brown Ale, and Strong Ale perform better in the spring and summer. These styles score higher in the warmer months, consistent with the preference for lighter, more refreshing beers during this time. Pale Lager and IPA show the most improvement in summer, while Amber/Red Ale has the highest ratings in summer compared to other seasons. 
 
 - **Colder months**:  
-  Richer and heavier styles such as **Wheat Beer**, **Barleywine**, **Strong Ale** have higher ratings in winter and fall. These beers, known for their fuller body and warming qualities, are more popular in the colder months. **Barleywine** and **Wheat Beer** are especially popular in winter, while **Strong Ale** has its highest ratings in fall, outperforming both spring and summer.
+  Richer and heavier styles such as Wheat Beer, Barleywine, Strong Ale have higher ratings in winter and fall. These beers, known for their fuller body and warming qualities, are more popular in the colder months. Barleywine and Wheat Beer are especially popular in winter, while Strong Ale has its highest ratings in fall, outperforming both spring and summer.
 
 - **Minimal or No Seasonal Variation**:  
-  **Stouts** and **Porters** show very little seasonal variation. The differences are minimal, indicating that these styles have consistent appeal throughout the year regardless of season.
+  Stouts and Porters show very little seasonal variation. The differences are minimal, indicating that these styles have consistent appeal throughout the year regardless of season.
 
 That said, the magnitude of the observed differences between seasons, while statistically significant, is small (around 0.05), and very little variation is observed with ratings alone at the United States scale.
 
