@@ -19,7 +19,6 @@ import plotly.express as px
 
 analyzer = SentimentIntensityAnalyzer()
 
-
 def preprocess_text(text):
     words = re.findall(r'\b\w+\b', text.lower())  
     return words
