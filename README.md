@@ -3,12 +3,11 @@
 ## Abstract
 Beer reviews offer a unique lens into consumer preferences, revealing intriguing patterns influenced by both seasonal trends and long-term shifts in taste. The goal of our project is to analyze potential patterns in ratings and reviews over time, focusing on how beer preferences evolve across seasons and years. This research could provide valuable insights for professionals such as brewers and marketers, enabling them to better align their product offerings with consumer demand. By understanding these seasonal trends, brewers can optimize their strategies to cater to shifting preferences.
 
-As the conclusion of our research, we aim to create a "time fresco" that suggests the ideal beer for each season or festivity, offering a visually engaging guide for both industry professionals and enthusiasts.
-
 ## Research questions
 - How do beer preferences change across different seasons or over the years?
 - Do alcohol content and beer style affect ratings depending on the season?
 - Does the location of users—and consequently different climate condition—impact their beer preferences?
+- Does the alcohol content or beer style impact ratings differently depending on the time of year? 
 - Are specific beers consistently associated with certain seasons or weather conditions in beer reviews?
 
 ## Proposed additional datasets
@@ -21,7 +20,7 @@ Our dataset includes two dataset from two different websites : BeerAdvocate and 
 
 ## Methods
 
-## Task 1: Data Preprocessing and Merging
+## Task 1: Data preprocessing and merging
 To ensure efficient data preprocessing for analyzing beer preferences, we focused on loading, cleaning, and merging datasets to create a comprehensive structure for analysis, following these steps:
 
 - **Load raw data files:** Imported datasets, including reviews, ratings, user profiles, and brewery information.
@@ -31,7 +30,7 @@ To ensure efficient data preprocessing for analyzing beer preferences, we focuse
 - **Categorization:** Group states based on geographical regions, classify beer styles into broader categories, and divide numerical alcohol content into three distinct ranges.
 ---
 
-## Task 2: Temporal Analysis of Beer Preferences
+## Task 2: Temporal analysis of beer preferences
 To uncover seasonal trends in beer preferences, we followed these steps to analyze variations in beer ratings and characteristics over time:
 
 - **Seasonal analysis:** Examined how beer ratings and characteristics change across seasons.
@@ -45,7 +44,7 @@ To uncover seasonal trends in beer preferences, we followed these steps to analy
 
 ---
 
-## Task 3: Comparative Analysis of Beer Preferences Across States
+## Task 3: Comparative analysis of beer preferences across states
 To uncover regional trends and cultural influences, we analyzed geographic variations in beer preferences by following these steps:
 
 - **Regional trends in ratings:**
@@ -54,7 +53,7 @@ To uncover regional trends and cultural influences, we analyzed geographic varia
 
 ---
 
-## Task 4: Sentiment Analysis
+## Task 4: Sentiment and semantic analysis
 To understand subjective aspects of beer preferences and their associations with seasons and events, we examined textual reviews using the following approach:
 
 - 4.1: **Word Frequency Analysis:** Identified the most frequent words in reviews across all data.
@@ -70,7 +69,7 @@ To understand subjective aspects of beer preferences and their associations with
 
 ---
 
-## Task 5: Develop a Recommendation Model Based on Season and Events
+## Task 5: Develop a recommendation model based on season and events
 To create a “time fresco” that suggests the ideal beer for each season or festivity, we aimed to design a visually engaging guide for industry professionals.
 
 - **Recommendation model construction:** Build a recommendation model that takes into account the time of year, location, and events.
@@ -83,11 +82,11 @@ To create a “time fresco” that suggests the ideal beer for each season or fe
 - **Data story**: 20th December
 
 ## Organization within the team
-- Eugénie: Task 1, 2, 4.4
-- Clémence: Task 1, 4.1
-- Marin: Task 1, 2, 4.2
-- Cléo: Task 1, 3, 5
-- Pauline: Task 1, 3, 4.3
+- Eugénie Cyrot: Seasonal trend analysis (years, style, US level)
+- Clémence Kiehl: Sentiment analysis 
+- Marin Philippe: Beer style analysis, Semantic analysis
+- Cléo Renaud: Sentiment analysis, Website for the datastory, READme
+- Pauline Theimer-Lienhard: Seasonal trend analysis (state level, abv), Organization of the repository (scripts, notebook)
 
 
 
