@@ -137,7 +137,6 @@ These results allow us to determine the characteristic that an ideal beer should
 While sentiment analysis uncovers the emotional tone behind a review, semantic analysis digs deeper into the meanings of words, helping us understand how different characteristics are associated with the beers' appeal. It’s not just about whether a beer is liked or disliked; it’s about why it stands out in the first place.
 By analyzing the specific language used in high rated reviews, we can uncover the key qualities that turn a simple beer into a fan favorite. In this section, we will dive into a semantic comparison of beer reviews across seasons to explore which characteristics define the most-loved beers in each time of the year. 
 
-#### Aroma
 
 <div style="display: flex; justify-content: center;">
   {% include aroma_treemap.html %}
@@ -145,7 +144,6 @@ By analyzing the specific language used in high rated reviews, we can uncover th
 
 In each season, specific **aroma** preferences emerge, shaping the appeal of beers based on what people enjoy the most. Based on our analysis of aroma reviews, the following trends stand : during winter, beers with rich, warm aromas are favored. Terms such as « malt », « caramel », « chocolate », and « roasted » are prominent, indicating a preference for fuller-bodied beers. In spring, there is a noticeable shift in aroma preferences. While the rich, malty notes remain popular, there is an increase in fruity terms like « citrus » and « grapefruit ». On the other side, summer introduces a different set of preferred aromas. Here, herbal scents become more prominent, such as « floral », « herbal » and « grassy » terms. These refreshing aromas provide a crisp and clean feeling, making beers more enjoyable in warmer weather. Finally, as autumn arrives, there is a resurgence of malt-based aromas, similar to winter. However, there is also an interesting interplay with fruity terms, which become less prominent compared to malty ones.
 
-#### Mouthfeel
 
 <div style="display: flex; justify-content: center;">
   {% include mouthfeel_treemap.html %}
@@ -153,15 +151,12 @@ In each season, specific **aroma** preferences emerge, shaping the appeal of bee
 
 When it comes to **mouthfeel**, the seasonal differences are less pronounced compared to other attributes. However, there are still subtle shifts in preferences that provide insights into what consumers enjoy the most throughout the year. Across the cooler seasons, terms like « rich », « creamy » and « smooth » dominate the reviews, indicating a preference for beers with a full-bodied and velvety texture. These characteristics align well with the comforting appeal of beers during these times of the year. During summer, there is a noticeable decrease in the prevalence of the term « rich ». Instead, lighter and more refreshing descriptors such as « tart » and « thin » start to gain prominence.
 
-#### Palate
-
 <div style="display: flex; justify-content: center;">
   {% include palate_treemap.html %}
 </div>
 
 The **palate** of a beer plays a significant role in its overall appeal, and seasonal variations reveal shifting preferences in flavor profiles. During the colder months, sweet terms dominate positive reviews. Words like « sweet », « caramel », and « toffee » are frequently mentioned, reflecting a preference for richer, sweeter flavors that provide warmth and comfort. However, as temperatures rise, acidic terms become more prevalent in positive reviews. Descriptors like « acidic », « citrusy », and « sour » indicate a preference for sharper, more refreshing palates that offer a crisp and invigorating experience.
 
-#### Taste
 
 <div style="display: flex; justify-content: center;">
   {% include taste_treemap.html %}
@@ -176,6 +171,15 @@ Seasonal variations also reveal distinct preferences for **taste**: positive rev
 In this project, we explored beer reviews, analyzing patterns in ratings, styles, and consumer preferences across seasons and regions in the United States. By leveraging numerical ratings and textual reviews, we uncovered insights into how beer preferences vary with alcohol content, seasonal changes, and geographical trends. Sentiment analysis of textual reviews further enriched our understanding, putting light on the aspects the most valued by beer enthusiasts.
 
 Our findings reveal that preferences are not only shaped by individual tastes but are also influenced by external factors like weather and cultural trends. Brewers and marketers can use these insights to better align their offerings with consumer expectations. Through this analysis, we hope to contribute to a deeper understanding of the dynamic and evolving beer landscape, offering value to researchers, breweries, and beer lovers alike.
+
+•⁠  ⁠*Winter*: Rich, warm aromas of malt, caramel, chocolate and roast dominate. High ABV beers are favored, along with fuller-bodied styles such as Stouts and Barleywines. Mouthfeel preferences tend towards creamy and smooth textures. Sweet flavors, including chocolate and caramel, are prominent.
+
+•⁠  ⁠*Spring*: Fruity aromas such as citrus and grapefruit appear alongside malty notes. Low to medium-ABV beers gain in popularity, with lighter styles such as Pale Lager and Pale Ale highly rated. Refreshing mouthfeel descriptors such as thin and tart become common. Bright, fresh flavors dominate, reflecting the renewal of the season.
+
+•⁠  ⁠*Summer*: Herbal and floral aromas such as grassy and herbal are prevalent. Low ABV beers are most preferred, with lighter and fruitier styles such as IPA and Wild Beer performing best. Mouthfeel tends towards light and thin textures, complementing sharp and acidic flavors such as citrus and sour notes.
+
+•⁠  ⁠*Autumn*: Malt-based aromas resurface, with a mix of caramel and chocolate notes, while fruity notes decrease. Mid-to-high ABV beers gain traction, with rich and comforting styles such as Strong Pale Ale becoming more popular. Mouthfeel remains smooth but incorporates fuller-bodied textures. Flavors blend fruity and sweet profiles, reflecting the transitional nature of the season.
+
 
 Thank you for visiting our project website, and we hope our work inspires further exploration of this rich and flavorful topic!
 
