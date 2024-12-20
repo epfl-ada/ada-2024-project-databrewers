@@ -223,7 +223,7 @@ def analyse_flavours(reviews: pd.DataFrame):
     primary_plot_data = plot_data[plot_data['flavour'].isin(primary_flavours)]
     other_plot_data = plot_data[plot_data['flavour'].isin(other_flavours)]
 
-    fig, axes = plt.subplots(1, 1, figsize=(15, 20), sharex=True)
+    fig, axes = plt.subplots(1, 1, figsize=(15, 8), sharex=True)
     
     # Plot for Primary Flavours
     sns.lineplot(
@@ -234,10 +234,10 @@ def analyse_flavours(reviews: pd.DataFrame):
         marker='o', 
         ax=axes
     )
-    axes.set_title('Normalized Occurrences of Citrus, Sweet, and Bitter Flavours Over Time')
-    axes.set_xlabel('Month')
-    axes.set_ylabel('Normalized Occurrences')
-    axes.legend(title='Flavour')
+    axes.set_title('Normalized Occurrences of Citrus, Sweet, and Bitter Flavours Over Time', fontsize=20)
+    axes.set_xlabel('Month', fontsize=18)
+    axes.set_ylabel('Normalized Occurrences', fontsize=18)
+    axes.legend(title='Flavour', fontsize=16)
     
     
     # Improve layout
@@ -309,15 +309,15 @@ def group_styles_by_flavours(reviews):
     )
     
     # Set plot titles and labels
-    plt.title('Normalized Flavour Occurrences in US Beer Reviews by Style', fontsize=16)
-    plt.xlabel('Beer Style', fontsize=14)
-    plt.ylabel('Percentage of Flavour Mentions (%)', fontsize=14)
+    plt.title('Normalized Flavour Occurrences in US Beer Reviews by Style', fontsize=20)
+    plt.xlabel('Beer Style', fontsize=18)
+    plt.ylabel('Percentage of Flavour Mentions (%)', fontsize=18)
     
     # Rotate x-axis labels for better readability
-    plt.xticks(rotation=45, ha='right', fontsize=12)
+    plt.xticks(rotation=45, ha='right', fontsize=18)
     
     # Adjust legend
-    plt.legend(title='Flavour', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=12)
+    plt.legend(title='Flavour', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=16)
     
     # Improve layout to prevent clipping of labels and legend
     plt.tight_layout()
