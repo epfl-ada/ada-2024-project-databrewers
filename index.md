@@ -138,7 +138,19 @@ While sentiment analysis uncovers the emotional tone behind a review, semantic a
 By analyzing the specific language used in high rated reviews, we can uncover the key qualities that turn a simple beer into a fan favorite. In this section, we will dive into a semantic comparison of beer reviews across seasons to explore which characteristics define the most-loved beers in each time of the year. 
 
 <div style="display: flex; justify-content: center;">
-  {% include mouthfeel_treemap.html.html %}
+  {% include palate_treemap.html %}
+</div>
+
+<div style="display: flex; justify-content: center;">
+  {% include aroma_treemap.html %}
+</div>
+
+<div style="display: flex; justify-content: center;">
+  {% include taste_treemap.html %}
+</div>
+
+<div style="display: flex; justify-content: center;">
+  {% include mouthfeel_treemap.html %}
 </div>
 
 ##### Winter: the warmth of rich flavors
