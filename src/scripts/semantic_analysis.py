@@ -16,6 +16,7 @@ import seaborn as sns
 import plotly.express as px
 import plotly.io as pio
 import plotly.graph_objects as go
+from sklearn.feature_extraction.text import CountVectorizer
 
 analyzer = SentimentIntensityAnalyzer()
 tqdm.pandas()
@@ -133,10 +134,8 @@ def count_flavour_occurrences(text, flavour):
     if count > 0:
         return 1
     return count
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.feature_extraction.text import CountVectorizer
+
+
 
 def process_flavours(text, flavours):
     """
@@ -181,29 +180,23 @@ def analyse_flavours(reviews: pd.DataFrame):
     # Define primary and other flavours
     primary_flavours = ['citrus', 'sweet', 'bitter']
     other_flavours = [flavour for flavour in all_flavours if flavour not in primary_flavours]
-    
-    # Drop reviews with missing 'aroma' or 'palate'
+
     reviews = reviews.dropna(subset=['aroma', 'palate'])
-    
-    # Keep reviews where the sum of 'aroma' and 'palate' is >= 8 (i.e., average >= 4)
     reviews = reviews[(reviews['aroma'] + reviews['palate']) >= 8.0]
-    
-    # Process all flavours using the optimized process_flavours function
+
     flavour_counts = process_flavours(reviews, all_flavours)
     
-    # Add flavour counts to the reviews DataFrame
+
     reviews = pd.concat([reviews, flavour_counts], axis=1)
     
-    # Keep only reviews where the sum of all flavour counts is > 0
+
     reviews = reviews[flavour_counts.sum(axis=1) > 0]
-    
-    # This sums up all flavour counts for each month
+
     total_flavour_mentions_per_month = flavour_counts.groupby(reviews['month']).transform('sum').sum(axis=1)
     reviews['total_flavour_mentions'] = total_flavour_mentions_per_month
     
     print("Normalizing flavour occurrences by total flavour mentions per month...")
-    
-    # Normalize flavour counts by total_flavour_mentions
+
     normalized_columns = [f"{flavour}_normalized" for flavour in all_flavours]
     reviews[normalized_columns] = flavour_counts.div(reviews['total_flavour_mentions'], axis=0)
     
@@ -217,22 +210,20 @@ def analyse_flavours(reviews: pd.DataFrame):
         value_name='normalized_occurrence'
     )
     
-    # Clean the 'flavour' column by removing '_normalized'
+
     plot_data['flavour'] = plot_data['flavour'].str.replace('_normalized', '', regex=False)
     
-    # Convert 'month' to datetime if it's not already
+
     if not pd.api.types.is_datetime64_any_dtype(plot_data['month']):
         plot_data['month'] = pd.to_datetime(plot_data['month'])
     
-    # Sort by month for proper plotting
+
     plot_data = plot_data.sort_values('month')
-    
-    # Separate data into primary and other flavours
+
     primary_plot_data = plot_data[plot_data['flavour'].isin(primary_flavours)]
     other_plot_data = plot_data[plot_data['flavour'].isin(other_flavours)]
-    
-    # Set up the plotting environment with two subplots
-    fig, axes = plt.subplots(2, 1, figsize=(15, 20), sharex=True)
+
+    fig, axes = plt.subplots(1, 1, figsize=(15, 20), sharex=True)
     
     # Plot for Primary Flavours
     sns.lineplot(
@@ -241,26 +232,13 @@ def analyse_flavours(reviews: pd.DataFrame):
         y='normalized_occurrence', 
         hue='flavour', 
         marker='o', 
-        ax=axes[0]
+        ax=axes
     )
-    axes[0].set_title('Normalized Occurrences of Citrus, Sweet, and Bitter Flavours Over Time')
-    axes[0].set_xlabel('Month')
-    axes[0].set_ylabel('Normalized Occurrences')
-    axes[0].legend(title='Flavour')
+    axes.set_title('Normalized Occurrences of Citrus, Sweet, and Bitter Flavours Over Time')
+    axes.set_xlabel('Month')
+    axes.set_ylabel('Normalized Occurrences')
+    axes.legend(title='Flavour')
     
-    # Plot for Other Flavours
-    sns.lineplot(
-        data=other_plot_data, 
-        x='month', 
-        y='normalized_occurrence', 
-        hue='flavour', 
-        marker='o', 
-        ax=axes[1]
-    )
-    axes[1].set_title('Normalized Occurrences of Other Flavours Over Time')
-    axes[1].set_xlabel('Month')
-    axes[1].set_ylabel('Normalized Occurrences')
-    axes[1].legend(title='Flavour')
     
     # Improve layout
     plt.tight_layout()
@@ -268,26 +246,68 @@ def analyse_flavours(reviews: pd.DataFrame):
     
     return reviews
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def group_styles_by_flavours(reviews):
-    flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 'sweet', 'bitter', 'sour', 'tart', 'crisp']
-    # Group by style and sum the flavour columns
-    style_flavours = reviews.groupby('simplified_styles')[flavours].sum()
+    """
+    Groups beer reviews by style, normalizes flavour mentions, and plots the distribution.
+
+    Parameters:
+    - reviews (pd.DataFrame): DataFrame containing beer reviews with a 'style_simp' column 
+      and flavour columns ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 
+      'sweet', 'bitter', 'sour', 'tart', 'crisp'].
+
+    Returns:
+    - pd.DataFrame: DataFrame with normalized flavour percentages per style.
+    """
+    # Define the list of flavours
+    flavours = ['hoppy', 'malty', 'fruity', 'spicy', 'citrus', 
+                    'sweet', 'bitter', 'sour', 'tart', 'crisp']
     
-    # Normalize the flavour occurrences for each style in regards to the total flavours for that style
-    for flavour in flavours:
-        style_flavours[f"{flavour}_normalized"] = style_flavours[flavour] / style_flavours[flavours].sum(axis=1)
-        
-    # Plot the normalized flavour occurrences for each style
-    plt.figure(figsize=(15, 10))
-    plt.title('Normalized Flavour Occurrences in US Beer Reviews by Style')
-    for flavour in tqdm(flavours):
-        sns.barplot(data=style_flavours, x='simplified_styles', y=f"{flavour}_normalized", label=flavour)
-    plt.xlabel('Style')
-    plt.ylabel('Normalized Occurrences')
-    plt.legend()
-    plt.xticks(rotation=45)
+    # Validate that all necessary columns are present
+    missing_flavours = [flavour for flavour in flavours if flavour not in reviews.columns]
+    if missing_flavours:
+        raise ValueError(f"The following flavour columns are missing in the DataFrame: {missing_flavours}")
+    style_flavours = reviews.groupby('style_simp')[flavours].sum()
+    print("Calculating total flavour mentions per style...")
+    style_flavours['total_flavours'] = style_flavours.sum(axis=1)
+    style_flavours['total_flavours'].replace(0, pd.NA, inplace=True)
+    normalized_flavours = style_flavours[flavours].div(style_flavours['total_flavours'], axis=0) * 100
+
+    normalized_flavours.dropna(inplace=True)
+
+    normalized_flavours = normalized_flavours.reset_index()
+    
+    # Melt the DataFrame to long format for seaborn
+    plot_data = normalized_flavours.melt(
+        id_vars='style_simp', 
+        value_vars=flavours, 
+        var_name='Flavour', 
+        value_name='Percentage'
+    )
+    
+    # Initialize the matplotlib figure
+    plt.figure(figsize=(18, 12))
+    
+    # Create a bar plot with 'style_simp' on the x-axis and 'Percentage' on the y-axis
+    sns.barplot(
+        data=plot_data, 
+        x='style_simp', 
+        y='Percentage', 
+        hue='Flavour',
+        palette='Set2'  # Choose a color palette for better distinction
+    )
+    
+    plt.title('Normalized Flavour Occurrences in US Beer Reviews by Style', fontsize=16)
+    plt.xlabel('Beer Style', fontsize=14)
+    plt.ylabel('Percentage of Flavour Mentions (%)', fontsize=14)
+    plt.xticks(rotation=45, ha='right', fontsize=12)
+    plt.legend(title='Flavour', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=12)
     plt.tight_layout()
     plt.show()
+    return normalized_flavours
 
 
 # Visualizes the occurrences of a specific word for each time period.
