@@ -1,5 +1,7 @@
 # DataBrewers
 
+Our datastory can be found on [this website](https://epfl-ada.github.io/ada-2024-project-databrewers/)
+
 ## Abstract
 Beer reviews offer a unique lens into consumer preferences, revealing intriguing patterns influenced by both seasonal trends and long-term shifts in population taste. The goal of our project is to analyze potential patterns in consumers’ ratings and reviews over time, focusing on how beer preferences evolve across seasons and years. This research could provide valuable insights for professionals such as brewers and marketers, enabling them to better align their product offerings with consumer demand. By understanding these seasonal trends, brewers can optimize their strategies to adapt to shifting preferences.
 
